@@ -3,3 +3,8 @@
 zig-cache
 *.tdy
 *.o
+/inputs/
+\*.a
+workspaces
+.apl.history
+*.a

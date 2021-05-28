@@ -30,6 +30,15 @@ fn num_type(n: u64) NumT {
     }
 }
 
+fn all_abundant_nums(n: u64) []u64 { // TODO:
+    // All abundant numbers below n
+    var as: []u64;
+}
+
+fn abundant_sum(n: u64, a: []u64) bool {
+    // Search if n can be written as a sum of two elements of as
+}
+
 pub fn main() void {
     var i: u64 = 2;
     while (i <= 30) : (i += 1) {

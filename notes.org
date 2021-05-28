@@ -1,0 +1,7 @@
+* Some notes on my solutions
+** Problem 17 - Numbers as English strings
+This would have been a simpler if I ignored the space and punctuation issues and wanted to just calculate the number of letters. For e.g. if ~N>100~ and ~N%100 != 0~ then *and* must be in the number. So we can ignore all the punctuation code altogether(I had to consider 8 different states to get all the corner cases).
+
+I haven't found a good (better looking) way to get the digits of a number. I could've used recursive shifting by /10 and %10 if the number was larger.
+** Problem 19 - Counting Sundays
+Mostly modulo arithmetic.

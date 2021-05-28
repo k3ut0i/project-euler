@@ -1,0 +1,2 @@
+* Fibonacci number with 1000 digits
+The nth Fibonacci number F_n is approximately (phi^n)/sqrt(5). So if it has 1000 digits then (log F_n) = n*log(phi)+0.5*log(5) = 1000. Hence n must be (1000 - 0.5*log(5))/log(phi).
