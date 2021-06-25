@@ -1,0 +1,4 @@
+* Reciprocal Cycles
+  I will have to implement manual division to find the cycle. I could also get away with fixing a very large precision and analyzing it for cycles, but that feels too hacky.
+
+  <2021-06-25 Fri> [[file:p26.raku][Completed]] a straight forward division method in ~raku~ and got the answer in ~18 secs.
