@@ -26,7 +26,7 @@ sub man-div($a, $b) {
 sub max-recurring-cycle ($l) {
     my $max = 0; my $max_num = 1; 
     for (2..$l) {
-	my $x = man-div(1, $_);
+	my $x = man-div(1, $_); # I do not understand why list assignment is not working perl-style
 	my $q = $x[0];
 	my $recur_start = $x[1];
 	my @digits = $x[2];

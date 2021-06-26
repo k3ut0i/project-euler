@@ -1,0 +1,5 @@
+* Distinct Powers
+  This is a full brute force solution in GNU-APL.
+  #+begin_src gnu-apl
+    a←1↓⍳100◊⍴∪,a∘.*a
+  #+end_src
