@@ -1,0 +1,5 @@
+* Pandigital Products
+  - To coalesce products of type AB and BA we can constrain A <= B.
+  - AB = C. So we need to find the possible sizes for A, B, and C.
+    + With a little analysis we get the possible sizes for A, B, and C as either (1, 4, 4) or (2, 3, 4)
+    + If we try all 9!=362880 permutations we can find the products
