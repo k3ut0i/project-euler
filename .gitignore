@@ -8,3 +8,4 @@ zig-cache
 workspaces
 .apl.history
 *.a
+.precomp
