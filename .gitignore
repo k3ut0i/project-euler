@@ -9,3 +9,5 @@ workspaces
 .apl.history
 *.a
 .precomp
+/input/
+/.juliahistory

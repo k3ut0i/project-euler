@@ -1,0 +1,15 @@
+* Learning Julia
+I lost my project euler account, so I'm redoing most of my first 25 to learn julia.
+I did julia in a AOC in the past, but forgot most of it.
+
+1. [X] while loops
+2. [X] while loops
+3. [X] function, for loop
+4. [X] I first tried, double looping from 999:100, but the first palindrome I encounterd will not the biggest one! Now how do I loop such that x*y is in descending order? Just brute forced it. ~maximum~, ~filter~ and list comprehensions
+5. [X] just ~lcm(1:20)~
+6. [X] just math, used a ~let~ block
+7. [X] simple sqrt seive for nth prime
+8. [X] math logic, finally had to use IO. ~read~, ~eof~; also optional arguments
+9. [X] math, brute search for pythagorean triples
+10. [X] ~module~; NumberTheory module: just a brute ~is_prime~ for now.
+
