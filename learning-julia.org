@@ -12,4 +12,80 @@ I did julia in a AOC in the past, but forgot most of it.
 8. [X] math logic, finally had to use IO. ~read~, ~eof~; also optional arguments
 9. [X] math, brute search for pythagorean triples
 10. [X] ~module~; NumberTheory module: just a brute ~is_prime~ for now.
+11. [X] ~using DelimitedFiles~ nice! used a matrix for first time too.
 
+
+
+** DONE 12 - Higly Divisible Triangular Number
+nth triangular number T_n =  n(n+1)/2. If we find the factorization for n, n+1, we can find out the number of divisors in T_n.
+- first we create a large array a: a[i] = smallest_prime_factor_of(i), ~spf_vec~
+- ~prime_factors~, uses this spf_vec to easily get the factorization as a ~Dict~
+
+** DONE 13 - Large Sum
+find the first 10 digits of the sum of 100 50-digit numbers.
+- used matrices well
+- using rows and columns by a[1, :] etc..
+- ~reduce~ by dims
+
+** DONE 14 - Longest Collatz Sequence
+Which starting number under 10^6 produces longest collatz sequence.
+- used partial paths; stopped building sequences which already had mapped out.
+- Vector{Vector{Any}} to store paths for each starting number
+Overall this was a pretty good problem, took 3.1 secs. Fast considering I kept storing all the paths.
+
+#+begin_example
+  3.291183 seconds (23.88 M allocations: 1.079 GiB, 55.43% gc time)
+elapsed time (ns):  3291183435
+gc time (ns):       1824176184
+bytes allocated:    1158150848
+pool allocs:        23880643
+non-pool GC allocs: 165
+malloc() calls:     3
+free() calls:       3
+minor collections:  13
+full collections:   3
+#+end_example
+
+** DONE 15 - Lattice Paths
+any sequence of n rights, n downs will give us a path. So 2n steps, we have to choose n of them as rights. The rest will be dows. So 2nCn paths
+- julia has a built in ~binomial~ function
+
+** DONE 16 - Power Digit Sum
+Sum of digits of the number 2^1000. 2^10 ~ 10^3, so 2^1000 > 10^300. So atleast a 300 digit number. I just brute force calculated it, it has 302 digits. Instead of using mpc, I'm going to try using just Int64 and do it.
+- ~long-int.jl~, new module ~LongNums~.
+- first ~struct~ and dispatching on new types
+- Base.show extended to print my new struct as an integer.
+
+** DONE 17 - Number Letter Counts
+This seems tedious.
+#+begin_src julia
+sum(map(n -> count(c -> Base.Unicode.isletter(c), num2words(n)), 1:1000))
+#+end_src
++Not giving me the correct answer.+ small bug, corrected now.
+
+** DONE 18 - Maximum Path Sum I
+Optimal path search; problem _67_ is the same problem with bigger size to discourage brute-force. So I'll just use efficent solution here too.
+
+** TODO 19 - Counting Sundays
+How many sundays fell on the first of the month during the twentieth century?
+1 Jan 1901 ---> 31 Dec 2000
+- 1901:2000
+- each year can be split into 365 + isleap(year) ? 1 : 0 days
+- each year can be split into months
+- so we finally can have an array of month days: [31, 29, ....] ~flatmap~
+- if we start counting with day1, then each month starts can be counted too: previous month start day + previous month number of days: [1, 32, 61] ~accumulate~
+- sunday occurs with a period of 7, so the (day number)mod7 will always be same.
+- day0 is sunday, filter all numbers with only 0mod7 ~filter~
+
+** DONE 20 - Factorial Digit Sum
+My ~LongNums~ will be useful again.
+
+** DONE 21 - Amicable Numbers
+- new ~Combinatorics~ module
+- ~divisors~ function in ~NumberTheory~ to get all the divisors of a number
+
+** TODO 22 - Names Scores
+as
+
+** DONE 67 - Maximum Path Sum II
+Same solution as problem 18.
