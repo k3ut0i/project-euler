@@ -66,7 +66,7 @@ sum(map(n -> count(c -> Base.Unicode.isletter(c), num2words(n)), 1:1000))
 ** DONE 18 - Maximum Path Sum I
 Optimal path search; problem _67_ is the same problem with bigger size to discourage brute-force. So I'll just use efficent solution here too.
 
-** TODO 19 - Counting Sundays
+** DONE 19 - Counting Sundays
 How many sundays fell on the first of the month during the twentieth century?
 1 Jan 1901 ---> 31 Dec 2000
 - 1901:2000
@@ -76,6 +76,7 @@ How many sundays fell on the first of the month during the twentieth century?
 - if we start counting with day1, then each month starts can be counted too: previous month start day + previous month number of days: [1, 32, 61] ~accumulate~
 - sunday occurs with a period of 7, so the (day number)mod7 will always be same.
 - day0 is sunday, filter all numbers with only 0mod7 ~filter~
+- ~|>~ some kind of pipe operator; need to find out more about it.
 
 ** DONE 20 - Factorial Digit Sum
 My ~LongNums~ will be useful again.
@@ -84,8 +85,26 @@ My ~LongNums~ will be useful again.
 - new ~Combinatorics~ module
 - ~divisors~ function in ~NumberTheory~ to get all the divisors of a number
 
-** TODO 22 - Names Scores
-as
+** DONE 22 - Names Scores
+- ~strip~, ~sort~, using ~map~ as a zipWith takes getting used to.
 
-** DONE 67 - Maximum Path Sum II
-Same solution as problem 18.
+** DONE 23 - Non-Abundant Sums
+find the sum of all positive integers that cannot be written as a sum of two positive abundant numbers.
+Abundant Number:: a number which is less than the sum of it's proper divisors.
+#+begin_quote
+It can be shown through mathematical analysis that any number greater than 28123 can be written as a sum of two abundant numbers, but the greatest number that cannot be expressed as such is not 28123.
+#+end_quote
+
+** DONE 24 - Lexicographic Permutations
+find the millionth lexicographic permutation of 0, 1, 2, ..., 9
+- the first factorial(9) of them start with 0. next factorial(9) start with 1, and so on. So since 2*factorial(9) < 1_000_000 < 3 * factorial(9), the millionth permutation starts with 2.
+- Now we need (1_000_000 - 2*factorial(9))th lexicographic permutation of [0, 1, 3, ..., 9]
+- at this point we can just recur.
+
+** DONE 25 - 1000-digit fibonacci number
+What is the index of first term in fibonacci sequence(1, 1, 2, 3, 5, ...) that has a thousand digits.
+Fibonacci number has an exact formula that can be got by it's generating function 1/(1-x-x^2). the roots of the denominator polynomial are (1+sqrt(5))/2 and (1-sqrt(5))/2. If we call them g, p resp. then F(n) = (g^n - p^n)/sqrt(5).
+
+Since (p^n)/sqrt(5) < 0.5, rounding (g^n)/sqrt(5) to the nearest integer will give the nth fibonacci number.
+If we reverse this formula and take the ceiling of the number, we will get the next fibonacci number greater than a given number.
+
