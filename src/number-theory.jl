@@ -2,6 +2,7 @@ module NumberTheory
 using ..Combinatorics
 
 export is_prime, smallest_prime_factors, prime_factors, divisors
+export non_trivial_divisors, which_power
 
 function is_prime(n)
     if n == 2
@@ -54,6 +55,19 @@ function divisors(n, spf_vec)
     ps = prime_factors(n, spf_vec)
     as = all_combinations(ps)
     map(pf2num, as)
+end
+
+function non_trivial_divisors(n, spf_vec)
+    ds = divisors(n, spf_vec)
+    return view(sort(ds), 2:length(ds)-1)
+end
+
+function which_power(n, ps)
+    expo = gcd(collect(values(ps)))
+    for p in keys(ps)
+        ps[p] = div(ps[p], expo)
+    end
+    return (pf2num(ps), expo)
 end
 
 end #endmodule

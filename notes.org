@@ -1,13 +1,54 @@
 * Some notes on my solutions
 1-25 are re-done in [[file:learning-julia.org][julia]].
+** DONE 26 - Reciprocal Cycles
+1. I can simulate the division method and look for cycles.
+2. It feels like there is a mathematical method here
+   If there is are repeating part, then Sum{r*10^-xi} will be the repeating part. where r is the sequence of digits and x is the length of repeating part. This is equal to r*Sum{10^-xi} = r/(1-10^-x). There will be 10^-a factor involved, but let us ignore that for now. Thus r*10^x/(999..9). So the denominator times 99...9 must be an integer or a non-recuring fraction that doesn't interact with this recurring part.
 
-** Problem 17 - Numbers as English strings
-This would have been a simpler if I ignored the space and punctuation issues and wanted to just calculate the number of letters. For e.g. if ~N>100~ and ~N%100 != 0~ then *and* must be in the number. So we can ignore all the punctuation code altogether(I had to consider 8 different states to get all the corner cases).
+The intuition is there, but need to put it down concretely.
+I somehow worked it through with many assumptions and arrived at the correct answer.
+** DONE 27 - Quadratic Primes
+- for n^2+an+b to be prime from n=0, b must be a prime and, n must be below b.
+- 1+a+b must also be a prime.
+- ~[(a, b) for a in (-1000:1000) for b in ps if is_prime(a+b+1)]~ gives 39k elements
+- I have an idea to write a winner iterator. :| Turns out to be kind of bfs search.
+  - There is a sequence of values, each of which might go to next step.
+  - At any step if the next step fails, we remove it.
+  - finally we are left with only winners
+  - so we need two functions, _next_step_, _failed?_
+  - Will be useful for pruning search spaces, also for bfs traversal search if we can allow _next_step_ to give us multiple next states.
 
-I haven't found a good (better looking) way to get the digits of a number. I could've used recursive shifting by /10 and %10 if the number was larger.
-** Problem 19 - Counting Sundays
-Mostly modulo arithmetic.
+Just brute forced it, after filtering b choices to positive and primes numbers
 
+** DONE 28 - Number Spiral Diagonals
+- length of the side of squares is [1, 3, 5, ....]
+- if length of side is n, then there are 4*(n-1) numbers on that square
+- the starting number is (n-2)^2+1 and ending number is n^2
+- thus the diagonal numbers are (n-2)^2+(n-1), (n-2)^2+2(n-1), (n-2)^2+3(n-1), (n-2)^2+4(n-1)
+- The sum of these is 4(n-2)^2+10(n-1) = 4n^2-6n+6
+- we can also sum these directly as Sum(n^2) and sum(n) are simple enough
+  + Have to be careful on n=1, The above quadratic gives 4 as it counts 1 itself 4 times
+
+** DONE 29 - Distinct Powers
+a^b = x^y and a < x, then x and a are both powers of some common number.
+- we can reduce a^b to an^bn, where an^e = a and b*e = bn and an^e <= ub, bn <= ub
+  and (an, bn) is the pair with smallest _an_ among all such possible pairs.
+- If a^b = x^y, then both of them will reduce to the same pair of numbers.
+- Now we just have to count the number of unique pairs
+:) All this just to avoid brute-forcing by BigInts. That's just a one-liner.
+
+** DONE 30 - Digit Fifth Powers
+I need to figure out the upper bound number possible.
+- For a number with (k+1) digits, 10^k is the smallest possible number and digit power sum is (k+1)*9^e. Since one is exponential and one is linear, there will be an upper bound.
+- For this case 10^k > (k+1)*9^5. for k=5, we have 10^5 < 6*9^5, but 10^6 > 7*9^5. So we need only consider upto k=5, i.e., 6digit numbers, i.e., numbers below one million.
+
+- a million iterations of a simple function(5 powers, 5 sums), it will run within 1sec
+
+** TODO 31 - Coin Sums
+A Combinatorics Question:: How many ways can 2 pounds(200 pences) be formed from
+1p, 2p, 5p, 10p, 20p, 50p, 1P(100p), 2P(200p)
+This must be done with combinatorics.
+- I remember doing some generating functions method to do something like this.
 
 ** TODO  64 - Odd Period Square Roots
 there is a recurrence relation, b/w a_i and x,y in (sqrt(N) - x)/y.
