@@ -1,5 +1,5 @@
 module Combinatorics
-export all_combinations
+export all_combinations, select_from_each
 
 function introduce(e, c, r)
     nr = deepcopy(r)
@@ -30,4 +30,9 @@ function all_combinations(d)
     end
 end
 
+"ass is a Vector{Vector{Any}}, return a [[x1, x2...] x1 in ass[1] ...]"
+function select_from_each(ass)
+    f = (xs, ys) -> [append!([x], y) for x in xs for y in ys]
+    return foldr(f, ass, init=[[]])
+end
 end #endmodule

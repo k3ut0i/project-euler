@@ -16,6 +16,14 @@ function is_prime(n)
     return true
 end
 
+"TODO: this will be better than unary version after linear-sieve is complete"
+function is_prime(n, spf_vec)
+    if n == 1
+        return false
+    else
+        return n == spf_vec[n]
+    end
+end
 
 function spf(n)
     for i in 2:Int(ceil(sqrt(n)))
@@ -26,6 +34,7 @@ function spf(n)
     return n
 end
 
+"TODO: I should replace this by a linear-sieve"
 function smallest_prime_factors(n)
     return map(spf, 1:n)
 end

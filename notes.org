@@ -44,11 +44,106 @@ I need to figure out the upper bound number possible.
 
 - a million iterations of a simple function(5 powers, 5 sums), it will run within 1sec
 
-** TODO 31 - Coin Sums
-A Combinatorics Question:: How many ways can 2 pounds(200 pences) be formed from
+** DONE 31 - Coin Sums
+Change-Making Problem:: How many ways can 2 pounds(200 pences) be formed from
 1p, 2p, 5p, 10p, 20p, 50p, 1P(100p), 2P(200p)
-This must be done with combinatorics.
-- I remember doing some generating functions method to do something like this.
+- This can be done with combinatorics.
+  + I remember doing some generating functions method to do something like this.
+  + with 8 different choices, this is not a good way to get answer
+- until wikipedia on _change making problem_ suggested dynamic programming. I didn't even recognize this as a simple knapsack problem!
+- Brute-forcing requires going through a search space of 200*100*40*20*10*4*2 = 1_280_000_000, a billion
+  + we can decrease this a lot by getting a combinatorial answer to (1p, 2p). Now the search space will just be 40*20*10*4*2 = 64_000.
+    #+begin_quote
+julia> @timev num_partitions_with(200, [5, 10, 20, 50, 100, 200]); nothing
+  0.262925 seconds (778.84 k allocations: 70.602 MiB, 76.49% gc time)
+elapsed time (ns):  262924841
+gc time (ns):       201122614
+bytes allocated:    74031456
+pool allocs:        778823
+non-pool GC allocs: 11
+malloc() calls:     1
+realloc() calls:    2
+free() calls:       2
+minor collections:  0
+full collections:   1
+    #+end_quote
+    Not a bad reduction. 10^9 search space would have taken a lot longer.
+
+
+** DONE 32 - Pandigital Products
+A n-digit number is pandigital if it uses all digits 1..n exactly once.
+- I might've done this before in prolog.
+- I need to find bounds for A, B, C such that A*B = C is a possible pandigital product.
+  + suppose A has x+1 digits, B has y+1 digits and C has z+1 digits.
+    x+y+z = 6
+    x+y < z+1
+    x+1+y+1 > z.
+    So z-2 < x+y < z+1, ie., x+y can only be z or z+1
+    x+y+z can only be 2z or 2z+1 = 6. So z can only be 3.
+- So should I check every divisor for every 4 digit number that has non repeating digit?
+#+begin_quote
+julia> @timev spf = smallest_prime_factors(10_000); sum(filter(x -> is_pandigital(x, spf), 1000:9999));nothing
+  0.000591 seconds (2 allocations: 78.172 KiB)
+elapsed time (ns):  591016
+gc time (ns):       0
+bytes allocated:    80048
+pool allocs:        1
+non-pool GC allocs: 0
+malloc() calls:     1
+free() calls:       0
+minor collections:  0
+full collections:   0
+
+#+end_quote
+:) less than 1ms
+
+** DONE 33 - Digit Cancelling Fractions
+- multiples of 11 are trivial cases
+- foldl(*, filter(is_digit_cancelling ,...))
+
+
+** DONE 34 - Digit Factorials
+- Need to find bounds
+  + the k digit number must be smaller than (k+1)*factorial(9)
+  + the k digit number must be greater than (k+1)
+  + So k >= 2 and k <= 7 (smallest 8 digit number is > 9*factorial(9))
+  + 2:9_999_999
+- simple brute forcing worked < 2 seconds
+
+
+** DONE 35 - Circular Primes
+- ~NumberTheory~ is becoming quite usefull. brute-forcing worked in < 1 second
+- ~circshift~ in julia :) made things easier
+
+
+** DONE 36 - Double-base Palindromes
+
+- julia has ~digits(n, base)~; nice
+
+
+** DONE 37 - Truncatable Primes
+- ~f(x) = x*x~ version of function definition. I didn't realize this even after writing a Base.show method previously.
+- tried out the upper bound as 1 million and that gave me 11 numbers. worked on the first try :)
+
+** DONE 38 - Pandigital Multiples
+- upper bound for the integer is 9999 since atleast two of the numbers must be concatenated. If it has 5 digits, then the result will non have 9 digits in it.
+- n <= 9 since anything greater than that will give result with > 9 digits in it.
+- rest is brute-force search
+
+** DONE 39 - Integer Right Triangles
+x+y+z = p, (x, y, z) form a right triangle with perimeter p. Which perimeter gives the most number of right triangles? 120 gives 3 of them.
+- just brute forced it. 150ms. Is there a way to do this optimally?
+
+
+** DONE 40 - Champernowne's Constant
+- (10-1)x1 digit numbers, (99-9)x2 digit numbers, (999-99)x3 digit numbers ...
+  - 9e(a-1)xa digit numbers
+- Now we figure out for each i, to which block it belongs.
+- after that with (i-sum(prev_blocks))mod(digits in each number of that block) and div gives us which number and which digit of the number
+Requires careful shaping of boundries.
+Sighhh... that was hairy. I was lucky it worked as fast as it did.
+
+** TODO 41 - Pandigital Prime
 
 ** TODO  64 - Odd Period Square Roots
 there is a recurrence relation, b/w a_i and x,y in (sqrt(N) - x)/y.
