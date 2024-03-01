@@ -5,7 +5,9 @@ export is_prime, smallest_prime_factors, prime_factors, divisors
 export non_trivial_divisors, which_power
 
 function is_prime(n)
-    if n == 2
+    if n <= 1
+        return false
+    elseif n == 2
         return true
     end
     for i in 2:ceil(sqrt(n))
@@ -18,7 +20,7 @@ end
 
 "TODO: this will be better than unary version after linear-sieve is complete"
 function is_prime(n, spf_vec)
-    if n == 1
+    if n <= 1
         return false
     else
         return n == spf_vec[n]
