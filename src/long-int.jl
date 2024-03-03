@@ -1,5 +1,5 @@
 module LongNums
-export add, mul, len, get_i, pow, LongNum
+export add, mul, len, get_i, pow, LongNum, digitsum
 
 struct LongNum
     data :: Vector{Int8} #smallest index is smallest 10thpower, little endian
@@ -77,4 +77,13 @@ function pow(x::LongNum, y::Integer)
     end
     return r
 end
+
+function digitsum(x::LongNum)
+    r = Int64(0)
+    for a in x.data
+        r += a
+    end
+    return r
+end
+
 end

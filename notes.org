@@ -177,11 +177,16 @@ https://en.wikipedia.org/wiki/Polygonal_number
 ** DONE 47 - Distinct Prime Factors
 - again brute forcing.
 
-** TODO 48 - Self Powers
+** DONE 48 - Self Powers
 - I'm trying to reduce this mathematically.
   + got upto a point, but I'm not sure more reduction is impossible
 - I need to define modulo arithmetic for powers, mutiplication etc...
   + I'm trying to avoid BigInts
+  + julia has ~invmod~ !! nice
+- :( I tried going the ~invmod~ route, So that I can just sum 10 terms...
+  + it did not work. invmod requires gcd be 1.
+  + I just used builtin ~powermod~ and summed all 1000 terms.
+
 
 ** DONE 49 - Prime Permutations
 - finally had to write a choice function to get k elements from a collection
@@ -207,7 +212,46 @@ How many values of binomial(n, r) are greater than one-million.
   + forall n. C(n, 1) = n, forall k.C(k, k) = 1.
 - ~count~ is nice. I just used partial application! ~count(==(10^6), ...)~. I din't even know julia had them!!!
 
-** TODO 54 - Poker Hands
+** DONE 54 - Poker Hands
+I need to map each hand to a scoring system with the following properties:
+1. uniquely determinded
+2. easily comparable. preferably in dictionary order.
+- took a while to write the scoring system.
+  + only player1 wins are accurate. The rest might be draws or player2 wins. comparision must also be done in reverse to eliminate draws.
+   
+** DONE 55 - lychrel numbers
+https://en.wikipedia.org/wiki/Lychrel_number
+Interesting a simple function can give rise to unsolved problems.
+- Just simulated everything.
+
+** DONE 56 - Powerful Digit Sum
+for a, b < 100 consider numbers of the form a^b. Which of these has the largest digit sum?
+- brute force it with ~LongNums~
+
+** DONE 57 - Square root convergents
+x = sqrt(2) - 1, then x = 1/(sqrt(2)+1) = 1/(2 + x). by repeatedly replacing x on the rhs with lhs, we get the continued fraction.
+- x_0 = 0
+- x_(n+1) = 1/(2+x_n)
+- Had to make it Rational{BigInt}; overflowing otherwise
+
+** TODO 58 - Spiral Primes
+I've already seen this in [[*28 - Number Spiral Diagonals][28 - Number Spiral Diagonals]].
+- now just have to filter primes
+- taking too long. even 5000 layer is still not < 10%, i.e., primes upto 25 million.
+
+** DONE 59 - Xor Decryption
+- I tried searching for _the _ for 26^3 possible keys.
+- Only 6 keys gave plain text that have it.
+- Looking at them only one had sensible starting words
+
+** TODO 60 - Prime Pair Sets                                :clique:subgraph:
+- Seems like I will be using lots of ~Combinatorics~
+- simple brute force is taking too long...
+- I first filtered all primes that can be split into primes that can be reverse combined to a new prime.
+  + Every pair from the required set will be in this.
+  + Now how do I get the required set??? We have a graph in which we need a five nodes that are all connected to each other, i.e, find the complete 5 node subgraph.
+  + I should draw the graph and see how it looks, there seem to be atmost 71 edges for 10^4 upperbound.
+  + It is still taking too long. How the hell can I get this in <1sec
 
 ** TODO  64 - Odd Period Square Roots
 there is a recurrence relation, b/w a_i and x,y in (sqrt(N) - x)/y.

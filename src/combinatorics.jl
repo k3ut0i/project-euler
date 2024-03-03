@@ -57,31 +57,6 @@ function permutations(n)
 end
 
 
-function insert_pos(i, cs)
-    for x in 1:length(cs)
-        if i < cs[x]
-            return x
-        end
-    end
-    return length(cs)+1
-end
-
-
-function my_insert(cs, x)
-    i = 1
-    for j in 1:length(cs)
-        if cs[j] >= x
-            break
-        else
-            i += 1
-        end
-    end
-    for j in i:length(cs)
-        cs[i] += 1
-    end
-    insert!(cs, i, x)
-end
-
 "all choices of k elements from as"
 function choose(as, k)
     n = length(as)
