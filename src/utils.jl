@@ -1,13 +1,12 @@
 module Utils
-export todigits
+export count_freq
 
-function todigits(x::Int)
-    v = Vector{Int8}()
-    while x != 0
-        push!(v, x%10)
-        x = div(x, 10)
+function count_freq(as)
+    d = Dict()
+    for a in as
+        d[a] = get(d, a, 0) + 1
     end
-    return v
+    return d
 end
 
 end

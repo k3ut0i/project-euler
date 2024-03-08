@@ -234,10 +234,15 @@ x = sqrt(2) - 1, then x = 1/(sqrt(2)+1) = 1/(2 + x). by repeatedly replacing x o
 - x_(n+1) = 1/(2+x_n)
 - Had to make it Rational{BigInt}; overflowing otherwise
 
-** TODO 58 - Spiral Primes
+** DONE 58 - Spiral Primes
 I've already seen this in [[*28 - Number Spiral Diagonals][28 - Number Spiral Diagonals]].
 - now just have to filter primes
 - taking too long. even 5000 layer is still not < 10%, i.e., primes upto 25 million.
+- for 1000 layers, I have 13.8%
+This problem is 5% difficulty, so thinking that I have missed something obvious, I searched for hints online. A few that I looked at just brute forced them using miller-rabin primality test.
+- I thought may be I should finally implement an advanced primality test, but then I came across https://en.wikipedia.org/wiki/Primality_test#Number-theoretic_methods
+- for all diagonal numbers n, n-1 is easily factorizable.
+- So I implemented lucas primality test. https://en.wikipedia.org/wiki/Lucas_primality_test
 
 ** DONE 59 - Xor Decryption
 - I tried searching for _the _ for 26^3 possible keys.
@@ -253,9 +258,127 @@ I've already seen this in [[*28 - Number Spiral Diagonals][28 - Number Spiral Di
   + I should draw the graph and see how it looks, there seem to be atmost 71 edges for 10^4 upperbound.
   + It is still taking too long. How the hell can I get this in <1sec
 
-** TODO  64 - Odd Period Square Roots
+** DONE 61 - Cyclical Figurate Numbers
+Cyclic set of 4-digit numbers:: last two digits of one number are first two digits of the other number; last number and the first form a pair.
+Find the sum of only ordered set of six cyclic 4-digit numbers for which each polygonal type([3, 4, 5, 6, 7, 8]) is represented.
+- there are 9000 4 digit numbers. binomial(9000, 4) ~ 10^21; full brute search is impossible
+- there are less than 100 4-digit triangual numbers. One of them must be in the set.
+  + for every number we check if another figurate number with starting two digits exists, if does we keep going.
+  + Hmm, we will be essentially doing backtracking.
+  + There are only 40 4-digit octagonal numbers; so it is better to start with those.
+- I first created a graph.
+  + nodes are all _for in 3:8, (i, f(i, n))_, i.e, tuples of all figurate numbers
+  + there is a directed edge between two nodes if last two digits of one number are first two digits of other and they are different figurate types
+  + In this graph, I need to find cycles of length 6 such that all nodes have different figurate types.
+  + I din't find any cycles of length 6, only those from 2:5
+    * Haaa, this is just dfs search for a first cycle. It did not represent all cycles.
+
+  + I need to find all figurate unique paths b/w nodes
+  + Finding all paths still did not work. :(
+  + Figured it out, my copy of visited and unique is not getting refreshed b/w different paths of the same vertices. So it is only working for one path.
+:) My first 20% difficulty problem
+I need to write a algorithms library. Seems like I'm going to need them from now.
+
+** DONE 62 - Cubic Permutations
+Find the smallest cube for which exactly five permutations of its digits are cube.
+- full brute search for a set of three permutations in a three digit range is taking > 37seconds
+- if x^3 and y^3 are digit permutations of each other, then they must have same number of digits, i.e., (x/y)^3 < 10. So for every number x, we check the range [x+1, x*10^(1/3)] for numbers whose cubes are digit factorials of x^3.
+  + If we find 4 other such numbers we have the answer.
+  + I found 2 such solutions in 1000:9999 range.
+
+** DONE 63 - Powerful Digit Counts
+How many n-digit positive integers exists which are also nth power of a digit.
+- +I assume we are not including 1:9 which trivialy satisfy this.+ we are!!
+- 1^1 = 1, so should 1 be included in solution?
+- 10^(n-1) =< x == d^n < 10^n
+  + n-1 < log x < n imples n-1/n < log d < 1 imples n < 1/(1-log d)
+  + If we take floor(1/(1-log10(d))) then we have a number of powers of digit d, that are of same digit-length of exponent.
+
+** DONE 64 - Odd Period Square Roots
 there is a recurrence relation, b/w a_i and x,y in (sqrt(N) - x)/y.
 We start with x=0, y=0. When we finally end up with a same (x, y) the period will be determined.
 
+Wow, this was tricky to get it right.
+- I defined a transition b/w two terms (t, t1) of type (a*sqrt(N) - b)/c.
+  - t = k + 1/t1; if t is represented by (a, b, c) then t1 will be (ac, x, a*a*N-b*b) where x has a tricky definition.
+  - Now I have to continue this transitions untill the state (a, b, c) repeats
+I looked in the forum and there are many simpler ways to do this. By going a more generic route, I seem to have complicated things for myself again!!
+
+** DONE 65 - Convergents of e
+Julia might make it easy with rational support.
+- I had to use Rational{BigInt}, but julia made things very easy.
+
+** TODO 66 - Diophantine Equation
+https://en.wikipedia.org/wiki/Chakravala_method
+
 ** DONE 67 - Maximum Path Sum II
 Same solution as problem 18.
+
+** TODO 68 - Magic 5-gon Ring
+
+** DONE 69 - Totient Maximum
+find the value of n <= 10^6 for which n/phi(n) is maximum.
+- ~totient~ added to ~NumberTheory~. direct calculation after prime factorization.
+- rest is just foldl to find the maximum
+I just did it on the repl, I forgot to write a script.
+
+** DONE 70 - Totient Permutation
+- just brute forced it.
+- did not run < 1sec.
+- there must be a smarter way to do i.
+
+I just looked at the forum and there is a smarter way to do it.
+
+ phi(n)/n = Product{forall p|n}(1-1/p), so for every new prime, the value of phi(n)/n becomes smaller, so we need as few prime factors as possible. If only one prime factor exists, then it will not be a digit permutation. So we search for prime pairs, that give us a digit permutation.
+
+ 
+** DONE 71 - Ordered Fractions
+- n/d < 3/7 implies 7n < 3d so if 7n+1 = 3d, then we get the nearest???
+  + 7n+1 = 3d, for d < 10^6 and maximize n
+  + (_, 999997) was the solution with maximal n
+- Yes we did, I was quite close to the decimal approx. ~round((3/7)*10^6)~ which I tried first.
+
+** DONE 72 - Counting Fractions
+How many elements are in the set of proper fractions (n/d) for d < 10^6.
+
+- there are (N-1)^2 pairs to form fractions with.
+- some of them form equivalent pairs; when gcd(n, d) > 1.
+- So for every d, we have phi(d) proper fractions; so the answer is sum(phi(d))
+- ~sum(i -> totient(i, spf_vec), 2:10^6)~
+
+** DONE 73 - Counting Fractions in a Range
+- 1/3 < n/d < 1/2 implies 2d < 6n < 3d implies 6n is in [2d+1:3d-1]
+- the above will give me all fractions but there will multiple equivalent ones; so I need to ignore n's that are not prime to d.
+
+** DONE 74 - Digit Factorial Chains
+- I created an array of transitions, i -> digit_factorial(i)
+  + I had to traverse these transitions to ensure that all are filled; some go above the upperbound
+- chains can be found by simple ~x = a[x]~ loop
+- 3.5secs; I could get this down if I don't actually keep building the chains
+
+** DONE 75 - Singular Integer Right Triangles
+- generate pythagorean triples for each length l.
+  + If this is a O(1) operation, then 1.5E6 can be done within 1sec.
+- for m > n > 0, (m^2-n^2, 2mn, m^2+n^2) is a triple; length = 2m(m+n)
+  + there can only be one way the input length l factorized into 2ab with a < b < 2a
+- This will only give primitive triples -- if m, n above are coprime -- so we need add all multiples of a primitive l below the upperbound too.
+- my solution took 36 seconds
+  + ~divisors~ for each number and ~spf_vec~ for 1.5 million numbers should be taking quite a chuck of that.
+    * Hmm, spf_vec for 1.5M takes < 1sec
+    * I profiled it, ~divisors~ itself is taking most of the time trying out all combinations. I should rewrite that sometime.
+
+** DONE 76 - Counting Summations
+https://en.wikipedia.org/wiki/Integer_partition
+- I implemented the recurrence relation(from wiki) the builds upto the required answer
+
+** TODO 79 - Passcode Derivation
+- if xyz is a login attempt, then indices i_x < i_y < i_z
+- if we assume all the characters in password are unique, then we can simple score each character with the number of characters smaller than it and we can obtain, all possible passwords.
+- but if we have instances were: i_x < i_y in one attempt and i_y < i_x in another, then either x or y needs to occur multiple times in the password.
+
+** DONE 92 - Square Digit Chains
+- easier than other chain problems(like factorial) since the upper bound ensures we don't need to do initial transitive closure above the upper bound values
+- since I construct the whole chain my solution to longer ~ 3 secs
+
+** DONE 97 - Large Non-Mersenne Prime
+- rolled my own ~powermod~ instead of using the builtin one.

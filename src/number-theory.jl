@@ -2,7 +2,7 @@ module NumberTheory
 using ..Combinatorics
 
 export is_prime, smallest_prime_factors, prime_factors, divisors
-export non_trivial_divisors, which_power
+export non_trivial_divisors, which_power, totient
 
 function is_prime(n)
     if n <= 1
@@ -81,5 +81,17 @@ function which_power(n, ps)
     return (pf2num(ps), expo)
 end
 
+function totient(n, spf_vec)
+    if (n == 1)
+        return 1
+    else
+        pfs = prime_factors(n, spf_vec)
+        phi = 1
+        for (p, k) in pairs(pfs)
+            phi *= p^(k-1)*(p-1)
+        end
+        return phi
+    end
+end
 
 end #endmodule
