@@ -314,7 +314,16 @@ https://en.wikipedia.org/wiki/Chakravala_method
 ** DONE 67 - Maximum Path Sum II
 Same solution as problem 18.
 
-** TODO 68 - Magic 5-gon Ring
+** DONE 68 - Magic 5-gon Ring                           :graphics_unfinished:
+I transformed this into a graph problem.
+- find all possible values for the sum = 1+2+3 -> 6+5+4, i.e., n=[6,15], fix n.
+- find all triples (x, y, z) that sum upto n.
+- create a graph with nodes as those triples, and edges b/w nodes that have a common number in the triples, label for that edge is the common number.
+- find a k-cycle(for k-gon) with disinct edge labels. This gives a magic k-gon.
+- [ ] Might be a nice idea to draw a graphviz, or even better a _magic_ looking 5-gon for each one found. Maybe try a custom svg with style sheets(never did that).
+- there are a total of 12 magic 5-gons. I need to convert my representation of them into strings required by the question
+- only 4 are of length 16
+- making sure the cycle is valid, and getting the solution string from the graph representation took too long.
 
 ** DONE 69 - Totient Maximum
 find the value of n <= 10^6 for which n/phi(n) is maximum.
@@ -371,14 +380,96 @@ How many elements are in the set of proper fractions (n/d) for d < 10^6.
 https://en.wikipedia.org/wiki/Integer_partition
 - I implemented the recurrence relation(from wiki) the builds upto the required answer
 
-** TODO 79 - Passcode Derivation
-- if xyz is a login attempt, then indices i_x < i_y < i_z
+** DONE 79 - Passcode Derivation
+- if xyz is a login attempt, then indices i_x < i_y < i_z (in original pass and logs)
 - if we assume all the characters in password are unique, then we can simple score each character with the number of characters smaller than it and we can obtain, all possible passwords.
 - but if we have instances were: i_x < i_y in one attempt and i_y < i_x in another, then either x or y needs to occur multiple times in the password.
+- thankfully, this was a easy version of the problem. multiplicity would make this tough.
+  + each digit was used only once, so if we collect all digits to the right of each digit, then the last one will have no digits to the right of it.
+  + so we can recursively build the password from the right.
+
+** DONE 81 - Path Sum: Two Ways
+Given an NxN matrix, find a minimal path sum from top-left to bottom-right.
+In this problem we can only move down and right. In the next two problems these restrictions are reduced.
+- this is quite straight forward. One full iteration of the matrix gives the answer
+
+** TODO 82 - Path Sum: Three Ways
+Here we can move up, down and right. We have to find the minimal path from left edge to right edge.
+- I need to be careful of orientation, my ~read_matrix~ function is giving me transpose matrix.
+
+** TODO 83 - PathSum: Four Ways
+Here we can move up, down, left, right. Minimal path from top-left to bottom-right.
+
+** TODO 84 - Monopoly Odds
+
+
+** DONE 85 - Counting Rectangles
+- let us assume the bottom-right corner is (0, 0) and top-left cornor is (x, y)
+- for each (a, b) 0 < a <= x, 0 < b <= y we count the following
+  + count all the rectangles with top-left corner at (a, b)
+  + this will be a*b
+- so the sum will be ab(a+1)(b+1)/4
+- now I should find nearest product of two triangular numbers to ub=2*10^6
+  + for each triangular number, I will find the maximum triangular that can be multipled to be below ub, and minimum triangular number that can be multiplied to be above ub
+  + minimum of all the above collected is our answer.
+
+** DONE 87 - Prime Power Triples
+How many numbers below 50 million can be expressed as the sum of prime square, cube, 4th power.
+- n = p^2 + q^3 + r^4 (p, q, r are primes)
+- the number of primes to look at is 331, almost 36 million choices; with numbers going upto 10 trillion.
+- solved it, runs in < 0.9sec
+  + I only summed the powers if they are below bounds. as the number will be definitely out of bounds, we ignore it and dont store it.
+
+** TODO 88 - Product Sum Numbers
+
+** TODO 89 - Roman Numerals
+Wow this looks tedious
+
+** TODO 91 - Right Triangles With Integer Coordinates
+Combinatorics??? Or will it become Diophantine?
 
 ** DONE 92 - Square Digit Chains
 - easier than other chain problems(like factorial) since the upper bound ensures we don't need to do initial transitive closure above the upper bound values
 - since I construct the whole chain my solution to longer ~ 3 secs
 
+
+** TODO 93 - Arithmetic Expressions
+Wow, this is quite different
+
+** TODO 94 - Almost Equilateral Triangles
+Almost Equilateral Triangle:: two sides are equal and they differ from the third by atmost 1.
+Find the sum of perimeters of all these triangles whose side lengths and area are integral, whose perimeters do not exceed one billion.
+ 
+** DONE 95 - Amicable Chains
+I actually forgot that sum of divisors has a closed formula, given a prime factorization. Previously I just got all divisors and summed them up, but the combinatorics was taking too much time.
+- with a better sum of divisors, this problem is not much different than other _chain_ problems.
+My first 30% problem, this didn't didn't feel that hard.
+
+** TODO 96 - Su Doku
+I'm finally writing a sudoku solver.
+
 ** DONE 97 - Large Non-Mersenne Prime
 - rolled my own ~powermod~ instead of using the builtin one.
+
+** TODO 98 - Anagramic Squares
+- two words must be permutations of each other, so the substituted numbers must be digit permutations of each other.
+- we can check if two words are permutations by ~count_freq~.
+  + first we collect all the permutations into bunches
+- if the number of letters is 10, then we > 3million checks to make, that is for just one bunch.
+
+
+** DONE 99 - Largest Exponential
+logarithm is monotonic, so we can compare logarithms instead of exponentials.
+I need to learn about floats more. Can I estimate how much error floating point representation causes? How much precision is needed for the given range of numbers??
+Let me try this out first.
+- it worked, Float64 precision helped. all the numbers seem to be around 6.919e6 range
+#+begin_src julia
+maximum(i -> reverse(i), enumerate(map(f, ns)))
+#+end_src
+- with builtin dictionary order comparisons things are becoming easy.
+
+** TODO 100 - Arranged Probability
+- (b, r) if b+r=n, integer solutions to n(n-1) = 2b(b-1)
+- this translates to 2(2b-1)^2-(2n-1)^2=1: a pell's equation
+- I'm gonna complete 66 and comeback for this
+
