@@ -308,7 +308,7 @@ I looked in the forum and there are many simpler ways to do this. By going a mor
 Julia might make it easy with rational support.
 - I had to use Rational{BigInt}, but julia made things very easy.
 
-** TODO 66 - Diophantine Equation
+** TODO 66 - Diophantine Equation                            :pells_equation:
 https://en.wikipedia.org/wiki/Chakravala_method
 
 ** DONE 67 - Maximum Path Sum II
@@ -376,9 +376,27 @@ How many elements are in the set of proper fractions (n/d) for d < 10^6.
     * Hmm, spf_vec for 1.5M takes < 1sec
     * I profiled it, ~divisors~ itself is taking most of the time trying out all combinations. I should rewrite that sometime.
 
-** DONE 76 - Counting Summations
+** DONE 76 - Counting Summations                                  :partition:
 https://en.wikipedia.org/wiki/Integer_partition
 - I implemented the recurrence relation(from wiki) the builds upto the required answer
+
+** TODO 77 - Prime Summations                                     :partition:
+Partition using only primes. Find the first number that can be written as a sum of primes in > 5000 different ways.
+\begin{gather}
+sopf(n) = \sum_{p\in\mathbb{P}, p|n}p \\
+\kappa(n)=\frac{1}{n}(sopf(n)+\sum_{j=1}^{n−1}sopf(j)\kappa(n - j))
+\end{gather}
+The above equation is taken from math.stackexchange site, that discusses prime partitions. I'm not sure how it was derived. If a(n, k) is the number of prime summations of n, using only primes below k, then:
+\begin{equation}
+a(n, k) = 
+\begin{cases}
+  a(n, k-1) & \text{if } k \not\in \mathbb{P} \\
+  \sum_{i=1}^{n\div k}a(n-i\cdot k, k-1) & \text{if } k \in \mathbb{P}
+\end{cases}
+\end{equation}
+
+** TODO 78 - Coin Partitions                                      :partition:
+find the least value of n for which 10^6|p(n).
 
 ** DONE 79 - Passcode Derivation
 - if xyz is a login attempt, then indices i_x < i_y < i_z (in original pass and logs)
@@ -435,11 +453,40 @@ Combinatorics??? Or will it become Diophantine?
 
 ** TODO 93 - Arithmetic Expressions
 Wow, this is quite different
+- I have to find the number of trees possible first.
+- Then choose the operators for branching nodes, numbers for leaves.
 
-** TODO 94 - Almost Equilateral Triangles
+** DONE 94 - Almost Equilateral Triangles                    :pells_equation:
 Almost Equilateral Triangle:: two sides are equal and they differ from the third by atmost 1.
 Find the sum of perimeters of all these triangles whose side lengths and area are integral, whose perimeters do not exceed one billion.
- 
+\begin{gather}
+  n^2 = (\frac{n \pm 1}{2})^2 + x^2 \qquad \Longrightarrow \qquad
+  (\frac{3n\pm1}{2})^2 - 3x^2 = 1\\
+  Area = x \cdot \frac{n\pm1}{2}
+\end{gather}
+
+Now we have pell's equation \(y^2 - 3x^2 = 1\). If \(y \not\equiv 0 (mod 3)\) then it is a solution to our problem.
+
+x=2, y=1 is a fundamental solution to \(x^2-3y^2=1\), so we just need to generate additional solutions within the given bounds and check them for our requirements.
+\begin{equation}
+\begin{matrix}
+  \displaystyle x_{k+1} \\
+  y_{k+1}
+\end{matrix} = \begin{bmatrix}
+  x_1 & y_1 \cdot n \\
+  y_1 & x_1
+\end{bmatrix}\begin{matrix}
+  x_k \\
+  y_k
+\end{matrix}
+\end{equation}
+This recurrence relation will give us solution in increasing order, so we can stop when reach the required upperbound.
+Perimeter is \(3n\pm2\), so \(n\leq\dfrac{10^9+2}{3}\), i.e., 333333334.
+The fundamental solution (2, 1) gives a empty triangle 1-1-0, with zero area, so we need to ignore that. The rest of solutions all give a triangle.
+#+begin_src julia
+sum(m -> isalmost△(m)[2], pells_3((x, y) -> x > 333333334)) - 2
+#+end_src
+
 ** DONE 95 - Amicable Chains
 I actually forgot that sum of divisors has a closed formula, given a prime factorization. Previously I just got all divisors and summed them up, but the combinatorics was taking too much time.
 - with a better sum of divisors, this problem is not much different than other _chain_ problems.
@@ -468,7 +515,7 @@ maximum(i -> reverse(i), enumerate(map(f, ns)))
 #+end_src
 - with builtin dictionary order comparisons things are becoming easy.
 
-** TODO 100 - Arranged Probability
+** TODO 100 - Arranged Probability                           :pells_equation:
 - (b, r) if b+r=n, integer solutions to n(n-1) = 2b(b-1)
 - this translates to 2(2b-1)^2-(2n-1)^2=1: a pell's equation
 - I'm gonna complete 66 and comeback for this
