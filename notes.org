@@ -308,8 +308,31 @@ I looked in the forum and there are many simpler ways to do this. By going a mor
 Julia might make it easy with rational support.
 - I had to use Rational{BigInt}, but julia made things very easy.
 
-** TODO 66 - Diophantine Equation                            :pells_equation:
+** DONE 66 - Diophantine Equation                            :pells_equation:
 https://en.wikipedia.org/wiki/Chakravala_method
+Heuristics to work with chakravala method seems hard to code.
+I did a continued fraction representation in 64, so that might be the easier route to take.
+Wiki says, (h_i, k_i) is a solution to \( x^2-ny^2\) where \(\dfrac{h_i}{k_i}\) is a convergent to the regular continued fraction of \(\sqrt{n}\).
+combined with wikipedia formula on continued fraction convergent gives:
+\begin{gather}
+  \text{The fundamental solution }(x_1, y_1) =
+  \begin{cases}
+    (h_{p-1}, k_{p-1}), \text{for p even} \\
+    (h_{2p-1}, k_{2p-1}), \text{for p odd}
+  \end{cases} \\
+  \dfrac{h_n}{k_n} = [a_0; a_1, ..., a_n] \\
+  \begin{bmatrix}
+    h_n & h_{n-1} \\ k_n & k_{n-1}
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+    a_0 & 1 \\ 1 & 0
+  \end{bmatrix}
+  ...
+  \begin{bmatrix}
+    a_n & 1 \\ 1 & 0
+  \end{bmatrix}
+\end{gather}
 
 ** DONE 67 - Maximum Path Sum II
 Same solution as problem 18.
@@ -445,11 +468,16 @@ Wow this looks tedious
 
 ** TODO 91 - Right Triangles With Integer Coordinates
 Combinatorics??? Or will it become Diophantine?
+A=(a, b) and X=(x, y). Suppose OA is the hypotenuse of OAX.
+\begin{gather}
+  a^2+b^2 = x^2+y^2+(a-x)^2+(b-x)^2 \Longrightarrow x^2+y^2-ax-by = 0 \\
+  (x-\dfrac{a}{2})^2 + (y-\dfrac{b}{2})^2 = \dfrac{a^2+b^2}{4}
+\end{gather}
+Integer points on the circle with diameter \(\overrightarrow{OA}\).
 
 ** DONE 92 - Square Digit Chains
 - easier than other chain problems(like factorial) since the upper bound ensures we don't need to do initial transitive closure above the upper bound values
 - since I construct the whole chain my solution to longer ~ 3 secs
-
 
 ** TODO 93 - Arithmetic Expressions
 Wow, this is quite different
@@ -466,7 +494,7 @@ Find the sum of perimeters of all these triangles whose side lengths and area ar
 \end{gather}
 
 Now we have pell's equation \(y^2 - 3x^2 = 1\). If \(y \not\equiv 0 (mod 3)\) then it is a solution to our problem.
-
+I just noticed that y cannot be 0 mod 3, otherwise 3 will divide 1.
 x=2, y=1 is a fundamental solution to \(x^2-3y^2=1\), so we just need to generate additional solutions within the given bounds and check them for our requirements.
 \begin{equation}
 \begin{matrix}
@@ -515,8 +543,29 @@ maximum(i -> reverse(i), enumerate(map(f, ns)))
 #+end_src
 - with builtin dictionary order comparisons things are becoming easy.
 
-** TODO 100 - Arranged Probability                           :pells_equation:
-- (b, r) if b+r=n, integer solutions to n(n-1) = 2b(b-1)
-- this translates to 2(2b-1)^2-(2n-1)^2=1: a pell's equation
-- I'm gonna complete 66 and comeback for this
-
+** DONE 100 - Arranged Probability                           :pells_equation:
+Let (b, r) be the number of blue and red discs respectively.
+- If \(\displaystyle b+r=n\),
+  \begin{align}
+    \mathbb{P}(BB)=\dfrac{b}{n}\cdot\dfrac{b-1}{n-1} \\
+    \mathbb{P}(BB)=\dfrac{1}{2} \Longrightarrow 2b(b-1) = n(n-1) \\
+    2(2b-1)^2 - (2n-1)^2=1
+  \end{align}
+We have pell's equation of the form \(x^2-2y^2=-1\), where \(x=1, y=1\) is a fundamental solution. For negative pell's equations, the additional solutions work a bit differently
+\begin{equation}
+\begin{matrix}
+  x_{k+2} \\
+  y_{k+2}
+\end{matrix} = \begin{bmatrix}
+  x_1^2+ny_1^2 & 2ny_1x_1 \\
+  2y_1x_1 & x_1^2+ny_1^2
+\end{bmatrix}
+\begin{matrix}
+  x_k \\
+  y_k
+\end{matrix}
+\end{equation}
+So the inner matrix is
+\begin{bmatrix}
+  3 & 4 \\ 2 & 3
+\end{bmatrix}

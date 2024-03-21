@@ -1,0 +1,1500 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-03-21 Thu 16:01 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgfba1fad">1. Some notes on my solutions</a>
+<ul>
+<li><a href="#org6391c6b">1.1. <span class="done DONE">DONE</span> 26 - Reciprocal Cycles</a></li>
+<li><a href="#org20a328d">1.2. <span class="done DONE">DONE</span> 27 - Quadratic Primes</a></li>
+<li><a href="#orgf57f0df">1.3. <span class="done DONE">DONE</span> 28 - Number Spiral Diagonals</a></li>
+<li><a href="#org6024e55">1.4. <span class="done DONE">DONE</span> 29 - Distinct Powers</a></li>
+<li><a href="#orgf3daede">1.5. <span class="done DONE">DONE</span> 30 - Digit Fifth Powers</a></li>
+<li><a href="#org6adf2bb">1.6. <span class="done DONE">DONE</span> 31 - Coin Sums</a></li>
+<li><a href="#orgebab1e2">1.7. <span class="done DONE">DONE</span> 32 - Pandigital Products</a></li>
+<li><a href="#org37af8da">1.8. <span class="done DONE">DONE</span> 33 - Digit Cancelling Fractions</a></li>
+<li><a href="#org7b3306f">1.9. <span class="done DONE">DONE</span> 34 - Digit Factorials</a></li>
+<li><a href="#org2348b4a">1.10. <span class="done DONE">DONE</span> 35 - Circular Primes</a></li>
+<li><a href="#org770180f">1.11. <span class="done DONE">DONE</span> 36 - Double-base Palindromes</a></li>
+<li><a href="#org796222b">1.12. <span class="done DONE">DONE</span> 37 - Truncatable Primes</a></li>
+<li><a href="#org594b986">1.13. <span class="done DONE">DONE</span> 38 - Pandigital Multiples</a></li>
+<li><a href="#org91dc879">1.14. <span class="done DONE">DONE</span> 39 - Integer Right Triangles</a></li>
+<li><a href="#org8dd5fb9">1.15. <span class="done DONE">DONE</span> 40 - Champernowne's Constant</a></li>
+<li><a href="#orgc468476">1.16. <span class="done DONE">DONE</span> 41 - Pandigital Prime</a></li>
+<li><a href="#orgf7a6eb8">1.17. <span class="done DONE">DONE</span> 42 - Triangle Coded Numbers</a></li>
+<li><a href="#org8200c03">1.18. <span class="done DONE">DONE</span> 43 - Substring Divisibility</a></li>
+<li><a href="#org31c398f">1.19. <span class="done DONE">DONE</span> 44 - Pentagon Numbers</a></li>
+<li><a href="#orga53667d">1.20. <span class="done DONE">DONE</span> 45 - Triangular, Pentagonal, Hexagonal</a></li>
+<li><a href="#org29a2635">1.21. <span class="done DONE">DONE</span> 46 - Goldbach's Other Conjecture</a></li>
+<li><a href="#orgc5777d2">1.22. <span class="done DONE">DONE</span> 47 - Distinct Prime Factors</a></li>
+<li><a href="#org7316510">1.23. <span class="done DONE">DONE</span> 48 - Self Powers</a></li>
+<li><a href="#org466802e">1.24. <span class="done DONE">DONE</span> 49 - Prime Permutations</a></li>
+<li><a href="#org8871953">1.25. <span class="done DONE">DONE</span> 50 - Consecutive Prime Sum</a></li>
+<li><a href="#orgad8c276">1.26. <span class="done DONE">DONE</span> 51 - Prime Digit Replacements</a></li>
+<li><a href="#org3be9ffa">1.27. <span class="done DONE">DONE</span> 52 - Permuted Multiples</a></li>
+<li><a href="#org4970bfd">1.28. <span class="done DONE">DONE</span> 53 - Combinatoric Selections</a></li>
+<li><a href="#org362ff2f">1.29. <span class="done DONE">DONE</span> 54 - Poker Hands</a></li>
+<li><a href="#orga087a17">1.30. <span class="done DONE">DONE</span> 55 - lychrel numbers</a></li>
+<li><a href="#orgc26023c">1.31. <span class="done DONE">DONE</span> 56 - Powerful Digit Sum</a></li>
+<li><a href="#orge535dd6">1.32. <span class="done DONE">DONE</span> 57 - Square root convergents</a></li>
+<li><a href="#org094e025">1.33. <span class="done DONE">DONE</span> 58 - Spiral Primes</a></li>
+<li><a href="#org16728d0">1.34. <span class="done DONE">DONE</span> 59 - Xor Decryption</a></li>
+<li><a href="#org49f1183">1.35. <span class="todo TODO">TODO</span> 60 - Prime Pair Sets&#xa0;&#xa0;&#xa0;<span class="tag"><span class="clique">clique</span>&#xa0;<span class="subgraph">subgraph</span></span></a></li>
+<li><a href="#org9902ed7">1.36. <span class="done DONE">DONE</span> 61 - Cyclical Figurate Numbers</a></li>
+<li><a href="#org6130352">1.37. <span class="done DONE">DONE</span> 62 - Cubic Permutations</a></li>
+<li><a href="#orge51ecfa">1.38. <span class="done DONE">DONE</span> 63 - Powerful Digit Counts</a></li>
+<li><a href="#org233e299">1.39. <span class="done DONE">DONE</span> 64 - Odd Period Square Roots</a></li>
+<li><a href="#org1c2db1b">1.40. <span class="done DONE">DONE</span> 65 - Convergents of e</a></li>
+<li><a href="#org1a8e92f">1.41. <span class="done DONE">DONE</span> 66 - Diophantine Equation&#xa0;&#xa0;&#xa0;<span class="tag"><span class="pells_equation">pells_equation</span></span></a></li>
+<li><a href="#org1e76819">1.42. <span class="done DONE">DONE</span> 67 - Maximum Path Sum II</a></li>
+<li><a href="#orge0e4d38">1.43. <span class="done DONE">DONE</span> 68 - Magic 5-gon Ring&#xa0;&#xa0;&#xa0;<span class="tag"><span class="graphics_unfinished">graphics_unfinished</span></span></a></li>
+<li><a href="#org6698b0c">1.44. <span class="done DONE">DONE</span> 69 - Totient Maximum</a></li>
+<li><a href="#org1f7029b">1.45. <span class="done DONE">DONE</span> 70 - Totient Permutation</a></li>
+<li><a href="#orgc349295">1.46. <span class="done DONE">DONE</span> 71 - Ordered Fractions</a></li>
+<li><a href="#orgfd2a1f9">1.47. <span class="done DONE">DONE</span> 72 - Counting Fractions</a></li>
+<li><a href="#org6d5b558">1.48. <span class="done DONE">DONE</span> 73 - Counting Fractions in a Range</a></li>
+<li><a href="#org1b71aef">1.49. <span class="done DONE">DONE</span> 74 - Digit Factorial Chains</a></li>
+<li><a href="#orgdd46d26">1.50. <span class="done DONE">DONE</span> 75 - Singular Integer Right Triangles</a></li>
+<li><a href="#org16fe125">1.51. <span class="done DONE">DONE</span> 76 - Counting Summations&#xa0;&#xa0;&#xa0;<span class="tag"><span class="partition">partition</span></span></a></li>
+<li><a href="#orgd21b6c0">1.52. <span class="todo TODO">TODO</span> 77 - Prime Summations&#xa0;&#xa0;&#xa0;<span class="tag"><span class="partition">partition</span></span></a></li>
+<li><a href="#org15b0a4d">1.53. <span class="todo TODO">TODO</span> 78 - Coin Partitions&#xa0;&#xa0;&#xa0;<span class="tag"><span class="partition">partition</span></span></a></li>
+<li><a href="#org01081fb">1.54. <span class="done DONE">DONE</span> 79 - Passcode Derivation</a></li>
+<li><a href="#org76d2fc5">1.55. <span class="done DONE">DONE</span> 81 - Path Sum: Two Ways</a></li>
+<li><a href="#org43aa03b">1.56. <span class="todo TODO">TODO</span> 82 - Path Sum: Three Ways</a></li>
+<li><a href="#org92fac38">1.57. <span class="todo TODO">TODO</span> 83 - PathSum: Four Ways</a></li>
+<li><a href="#org7aa6d7f">1.58. <span class="todo TODO">TODO</span> 84 - Monopoly Odds</a></li>
+<li><a href="#org038397e">1.59. <span class="done DONE">DONE</span> 85 - Counting Rectangles</a></li>
+<li><a href="#org689b173">1.60. <span class="done DONE">DONE</span> 87 - Prime Power Triples</a></li>
+<li><a href="#orgde0854a">1.61. <span class="todo TODO">TODO</span> 88 - Product Sum Numbers</a></li>
+<li><a href="#orgd7c0e61">1.62. <span class="todo TODO">TODO</span> 89 - Roman Numerals</a></li>
+<li><a href="#orgbf3386d">1.63. <span class="todo TODO">TODO</span> 91 - Right Triangles With Integer Coordinates</a></li>
+<li><a href="#org83a2644">1.64. <span class="done DONE">DONE</span> 92 - Square Digit Chains</a></li>
+<li><a href="#org0605b01">1.65. <span class="todo TODO">TODO</span> 93 - Arithmetic Expressions</a></li>
+<li><a href="#org7e24fef">1.66. <span class="done DONE">DONE</span> 94 - Almost Equilateral Triangles&#xa0;&#xa0;&#xa0;<span class="tag"><span class="pells_equation">pells_equation</span></span></a></li>
+<li><a href="#org821b925">1.67. <span class="done DONE">DONE</span> 95 - Amicable Chains</a></li>
+<li><a href="#org45b8bff">1.68. <span class="todo TODO">TODO</span> 96 - Su Doku</a></li>
+<li><a href="#org210f194">1.69. <span class="done DONE">DONE</span> 97 - Large Non-Mersenne Prime</a></li>
+<li><a href="#orgda4ec71">1.70. <span class="todo TODO">TODO</span> 98 - Anagramic Squares</a></li>
+<li><a href="#orgd176ae3">1.71. <span class="done DONE">DONE</span> 99 - Largest Exponential</a></li>
+<li><a href="#orgc413cf1">1.72. <span class="done DONE">DONE</span> 100 - Arranged Probability&#xa0;&#xa0;&#xa0;<span class="tag"><span class="pells_equation">pells_equation</span></span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgfba1fad" class="outline-2">
+<h2 id="orgfba1fad"><span class="section-number-2">1.</span> Some notes on my solutions</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+1-25 are re-done in <a href="learning-julia.html">julia</a>.
+</p>
+</div>
+<div id="outline-container-org6391c6b" class="outline-3">
+<h3 id="org6391c6b"><span class="section-number-3">1.1.</span> <span class="done DONE">DONE</span> 26 - Reciprocal Cycles</h3>
+<div class="outline-text-3" id="text-1-1">
+<ol class="org-ol">
+<li>I can simulate the division method and look for cycles.</li>
+<li>It feels like there is a mathematical method here
+If there is are repeating part, then Sum{r*10<sup>-xi</sup>} will be the repeating part. where r is the sequence of digits and x is the length of repeating part. This is equal to r*Sum{10<sup>-xi</sup>} = r/(1-10<sup>-x</sup>). There will be 10<sup>-a</sup> factor involved, but let us ignore that for now. Thus r*10<sup>x</sup>/(999..9). So the denominator times 99&#x2026;9 must be an integer or a non-recuring fraction that doesn't interact with this recurring part.</li>
+</ol>
+
+<p>
+The intuition is there, but need to put it down concretely.
+I somehow worked it through with many assumptions and arrived at the correct answer.
+</p>
+</div>
+</div>
+<div id="outline-container-org20a328d" class="outline-3">
+<h3 id="org20a328d"><span class="section-number-3">1.2.</span> <span class="done DONE">DONE</span> 27 - Quadratic Primes</h3>
+<div class="outline-text-3" id="text-1-2">
+<ul class="org-ul">
+<li>for n<sup>2</sup>+an+b to be prime from n=0, b must be a prime and, n must be below b.</li>
+<li>1+a+b must also be a prime.</li>
+<li><code>[(a, b) for a in (-1000:1000) for b in ps if is_prime(a+b+1)]</code> gives 39k elements</li>
+<li>I have an idea to write a winner iterator. :| Turns out to be kind of bfs search.
+<ul class="org-ul">
+<li>There is a sequence of values, each of which might go to next step.</li>
+<li>At any step if the next step fails, we remove it.</li>
+<li>finally we are left with only winners</li>
+<li>so we need two functions, <span class="underline">next<sub>step</sub></span>, <span class="underline">failed?</span></li>
+<li>Will be useful for pruning search spaces, also for bfs traversal search if we can allow <span class="underline">next<sub>step</sub></span> to give us multiple next states.</li>
+</ul></li>
+</ul>
+
+<p>
+Just brute forced it, after filtering b choices to positive and primes numbers
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf57f0df" class="outline-3">
+<h3 id="orgf57f0df"><span class="section-number-3">1.3.</span> <span class="done DONE">DONE</span> 28 - Number Spiral Diagonals</h3>
+<div class="outline-text-3" id="text-1-3">
+<ul class="org-ul">
+<li>length of the side of squares is [1, 3, 5, &#x2026;.]</li>
+<li>if length of side is n, then there are 4*(n-1) numbers on that square</li>
+<li>the starting number is (n-2)<sup>2</sup>+1 and ending number is n<sup>2</sup></li>
+<li>thus the diagonal numbers are (n-2)<sup>2</sup>+(n-1), (n-2)<sup>2</sup>+2(n-1), (n-2)<sup>2</sup>+3(n-1), (n-2)<sup>2</sup>+4(n-1)</li>
+<li>The sum of these is 4(n-2)<sup>2</sup>+10(n-1) = 4n<sup>2</sup>-6n+6</li>
+<li>we can also sum these directly as Sum(n<sup>2</sup>) and sum(n) are simple enough
+<ul class="org-ul">
+<li>Have to be careful on n=1, The above quadratic gives 4 as it counts 1 itself 4 times</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org6024e55" class="outline-3">
+<h3 id="org6024e55"><span class="section-number-3">1.4.</span> <span class="done DONE">DONE</span> 29 - Distinct Powers</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+a<sup>b</sup> = x<sup>y</sup> and a &lt; x, then x and a are both powers of some common number.
+</p>
+<ul class="org-ul">
+<li>we can reduce a<sup>b</sup> to an<sup>bn</sup>, where an<sup>e</sup> = a and b*e = bn and an<sup>e</sup> &lt;= ub, bn &lt;= ub
+and (an, bn) is the pair with smallest <span class="underline">an</span> among all such possible pairs.</li>
+<li>If a<sup>b</sup> = x<sup>y</sup>, then both of them will reduce to the same pair of numbers.</li>
+<li>Now we just have to count the number of unique pairs</li>
+</ul>
+<p>
+:) All this just to avoid brute-forcing by BigInts. That's just a one-liner.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf3daede" class="outline-3">
+<h3 id="orgf3daede"><span class="section-number-3">1.5.</span> <span class="done DONE">DONE</span> 30 - Digit Fifth Powers</h3>
+<div class="outline-text-3" id="text-1-5">
+<p>
+I need to figure out the upper bound number possible.
+</p>
+<ul class="org-ul">
+<li>For a number with (k+1) digits, 10<sup>k</sup> is the smallest possible number and digit power sum is (k+1)*9<sup>e</sup>. Since one is exponential and one is linear, there will be an upper bound.</li>
+<li>For this case 10<sup>k</sup> &gt; (k+1)*9<sup>5</sup>. for k=5, we have 10<sup>5</sup> &lt; 6*9<sup>5</sup>, but 10<sup>6</sup> &gt; 7*9<sup>5</sup>. So we need only consider upto k=5, i.e., 6digit numbers, i.e., numbers below one million.</li>
+
+<li>a million iterations of a simple function(5 powers, 5 sums), it will run within 1sec</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org6adf2bb" class="outline-3">
+<h3 id="org6adf2bb"><span class="section-number-3">1.6.</span> <span class="done DONE">DONE</span> 31 - Coin Sums</h3>
+<div class="outline-text-3" id="text-1-6">
+<p>
+Change-Making Problem:: How many ways can 2 pounds(200 pences) be formed from
+1p, 2p, 5p, 10p, 20p, 50p, 1P(100p), 2P(200p)
+</p>
+<ul class="org-ul">
+<li>This can be done with combinatorics.
+<ul class="org-ul">
+<li>I remember doing some generating functions method to do something like this.</li>
+<li>with 8 different choices, this is not a good way to get answer</li>
+</ul></li>
+<li>until wikipedia on <span class="underline">change making problem</span> suggested dynamic programming. I didn't even recognize this as a simple knapsack problem!</li>
+<li>Brute-forcing requires going through a search space of 200*100*40*20*10*4*2 = 1<sub>280</sub><sub>000</sub><sub>000</sub>, a billion
+<ul class="org-ul">
+<li><p>
+we can decrease this a lot by getting a combinatorial answer to (1p, 2p). Now the search space will just be 40*20*10*4*2 = 64<sub>000</sub>.
+</p>
+<blockquote>
+<p>
+julia&gt; @timev num<sub>partitions</sub><sub>with</sub>(200, [5, 10, 20, 50, 100, 200]); nothing
+  0.262925 seconds (778.84 k allocations: 70.602 MiB, 76.49% gc time)
+elapsed time (ns):  262924841
+gc time (ns):       201122614
+bytes allocated:    74031456
+pool allocs:        778823
+non-pool GC allocs: 11
+malloc() calls:     1
+realloc() calls:    2
+free() calls:       2
+minor collections:  0
+full collections:   1
+</p>
+</blockquote>
+<p>
+Not a bad reduction. 10<sup>9</sup> search space would have taken a lot longer.
+</p></li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgebab1e2" class="outline-3">
+<h3 id="orgebab1e2"><span class="section-number-3">1.7.</span> <span class="done DONE">DONE</span> 32 - Pandigital Products</h3>
+<div class="outline-text-3" id="text-1-7">
+<p>
+A n-digit number is pandigital if it uses all digits 1..n exactly once.
+</p>
+<ul class="org-ul">
+<li>I might've done this before in prolog.</li>
+<li>I need to find bounds for A, B, C such that A*B = C is a possible pandigital product.
+<ul class="org-ul">
+<li>suppose A has x+1 digits, B has y+1 digits and C has z+1 digits.
+x+y+z = 6
+x+y &lt; z+1
+x+1+y+1 &gt; z.
+So z-2 &lt; x+y &lt; z+1, ie., x+y can only be z or z+1
+x+y+z can only be 2z or 2z+1 = 6. So z can only be 3.</li>
+</ul></li>
+<li>So should I check every divisor for every 4 digit number that has non repeating digit?</li>
+</ul>
+<blockquote>
+<p>
+julia&gt; @timev spf = smallest<sub>prime</sub><sub>factors</sub>(10<sub>000</sub>); sum(filter(x -&gt; is<sub>pandigital</sub>(x, spf), 1000:9999));nothing
+  0.000591 seconds (2 allocations: 78.172 KiB)
+elapsed time (ns):  591016
+gc time (ns):       0
+bytes allocated:    80048
+pool allocs:        1
+non-pool GC allocs: 0
+malloc() calls:     1
+free() calls:       0
+minor collections:  0
+full collections:   0
+</p>
+</blockquote>
+<p>
+:) less than 1ms
+</p>
+</div>
+</div>
+
+<div id="outline-container-org37af8da" class="outline-3">
+<h3 id="org37af8da"><span class="section-number-3">1.8.</span> <span class="done DONE">DONE</span> 33 - Digit Cancelling Fractions</h3>
+<div class="outline-text-3" id="text-1-8">
+<ul class="org-ul">
+<li>multiples of 11 are trivial cases</li>
+<li>foldl(*, filter(is<sub>digit</sub><sub>cancelling</sub> ,&#x2026;))</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org7b3306f" class="outline-3">
+<h3 id="org7b3306f"><span class="section-number-3">1.9.</span> <span class="done DONE">DONE</span> 34 - Digit Factorials</h3>
+<div class="outline-text-3" id="text-1-9">
+<ul class="org-ul">
+<li>Need to find bounds
+<ul class="org-ul">
+<li>the k digit number must be smaller than (k+1)*factorial(9)</li>
+<li>the k digit number must be greater than (k+1)</li>
+<li>So k &gt;= 2 and k &lt;= 7 (smallest 8 digit number is &gt; 9*factorial(9))</li>
+<li>2:9<sub>999</sub><sub>999</sub></li>
+</ul></li>
+<li>simple brute forcing worked &lt; 2 seconds</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org2348b4a" class="outline-3">
+<h3 id="org2348b4a"><span class="section-number-3">1.10.</span> <span class="done DONE">DONE</span> 35 - Circular Primes</h3>
+<div class="outline-text-3" id="text-1-10">
+<ul class="org-ul">
+<li><code>NumberTheory</code> is becoming quite usefull. brute-forcing worked in &lt; 1 second</li>
+<li><code>circshift</code> in julia :) made things easier</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org770180f" class="outline-3">
+<h3 id="org770180f"><span class="section-number-3">1.11.</span> <span class="done DONE">DONE</span> 36 - Double-base Palindromes</h3>
+<div class="outline-text-3" id="text-1-11">
+<ul class="org-ul">
+<li>julia has <code>digits(n, base)</code>; nice</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org796222b" class="outline-3">
+<h3 id="org796222b"><span class="section-number-3">1.12.</span> <span class="done DONE">DONE</span> 37 - Truncatable Primes</h3>
+<div class="outline-text-3" id="text-1-12">
+<ul class="org-ul">
+<li><code>f(x) = x*x</code> version of function definition. I didn't realize this even after writing a Base.show method previously.</li>
+<li>tried out the upper bound as 1 million and that gave me 11 numbers. worked on the first try :)</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org594b986" class="outline-3">
+<h3 id="org594b986"><span class="section-number-3">1.13.</span> <span class="done DONE">DONE</span> 38 - Pandigital Multiples</h3>
+<div class="outline-text-3" id="text-1-13">
+<ul class="org-ul">
+<li>upper bound for the integer is 9999 since atleast two of the numbers must be concatenated. If it has 5 digits, then the result will non have 9 digits in it.</li>
+<li>n &lt;= 9 since anything greater than that will give result with &gt; 9 digits in it.</li>
+<li>rest is brute-force search</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org91dc879" class="outline-3">
+<h3 id="org91dc879"><span class="section-number-3">1.14.</span> <span class="done DONE">DONE</span> 39 - Integer Right Triangles</h3>
+<div class="outline-text-3" id="text-1-14">
+<p>
+x+y+z = p, (x, y, z) form a right triangle with perimeter p. Which perimeter gives the most number of right triangles? 120 gives 3 of them.
+</p>
+<ul class="org-ul">
+<li>just brute forced it. 150ms. Is there a way to do this optimally?</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org8dd5fb9" class="outline-3">
+<h3 id="org8dd5fb9"><span class="section-number-3">1.15.</span> <span class="done DONE">DONE</span> 40 - Champernowne's Constant</h3>
+<div class="outline-text-3" id="text-1-15">
+<ul class="org-ul">
+<li>(10-1)x1 digit numbers, (99-9)x2 digit numbers, (999-99)x3 digit numbers &#x2026;
+<ul class="org-ul">
+<li>9e(a-1)xa digit numbers</li>
+</ul></li>
+<li>Now we figure out for each i, to which block it belongs.</li>
+<li>after that with (i-sum(prev<sub>blocks</sub>))mod(digits in each number of that block) and div gives us which number and which digit of the number</li>
+</ul>
+<p>
+Requires careful shaping of boundries.
+Sighhh&#x2026; that was hairy. I was lucky it worked as fast as it did.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc468476" class="outline-3">
+<h3 id="orgc468476"><span class="section-number-3">1.16.</span> <span class="done DONE">DONE</span> 41 - Pandigital Prime</h3>
+<div class="outline-text-3" id="text-1-16">
+<ul class="org-ul">
+<li>Worst case scenario, a 9-digit pandigital prime exists
+<ul class="org-ul">
+<li>factorial(9) numbers must be checked it they are prime.</li>
+</ul></li>
+<li>Hmm, there are no 8 or 9-digit pandigital primes at all
+<ul class="org-ul">
+<li>Only 4 and 7 digit ones; curious</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf7a6eb8" class="outline-3">
+<h3 id="orgf7a6eb8"><span class="section-number-3">1.17.</span> <span class="done DONE">DONE</span> 42 - Triangle Coded Numbers</h3>
+<div class="outline-text-3" id="text-1-17">
+<p>
+Feels like a AOC question.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8200c03" class="outline-3">
+<h3 id="org8200c03"><span class="section-number-3">1.18.</span> <span class="done DONE">DONE</span> 43 - Substring Divisibility</h3>
+<div class="outline-text-3" id="text-1-18">
+<ul class="org-ul">
+<li>cut the factorial(10) space by a factor of 10
+<ul class="org-ul">
+<li>d6 must be either 0 or 5</li>
+<li>d4 must be even</li>
+</ul></li>
+<li>more optimization can be done but just this much has allowed &lt; 1sec runtime</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org31c398f" class="outline-3">
+<h3 id="org31c398f"><span class="section-number-3">1.19.</span> <span class="done DONE">DONE</span> 44 - Pentagon Numbers</h3>
+<div class="outline-text-3" id="text-1-19">
+<ul class="org-ul">
+<li>Pa, Pb are the pentagon numbers which give Pa+Pb=Pc and Pa-Pb=Pd;We will iterate over Pd
+<ul class="org-ul">
+<li>upper bound for a is (Pd-1)/3</li>
+</ul></li>
+<li>d is large&#x2026; iterating over d is going O(n<sup>3</sup>)
+<ul class="org-ul">
+<li>Iterating over a and b themselves gave me answer faster.</li>
+<li>If d was small the first strategy would've given me answer faser.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orga53667d" class="outline-3">
+<h3 id="orga53667d"><span class="section-number-3">1.20.</span> <span class="done DONE">DONE</span> 45 - Triangular, Pentagonal, Hexagonal</h3>
+<div class="outline-text-3" id="text-1-20">
+<p>
+<a href="https://en.wikipedia.org/wiki/Polygonal_number">https://en.wikipedia.org/wiki/Polygonal_number</a>
+40755 is simultaniously all three with indices (285, 165, 143). Find the next such number
+</p>
+<ul class="org-ul">
+<li>full brute force search. &lt; 1ms</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org29a2635" class="outline-3">
+<h3 id="org29a2635"><span class="section-number-3">1.21.</span> <span class="done DONE">DONE</span> 46 - Goldbach's Other Conjecture</h3>
+<div class="outline-text-3" id="text-1-21">
+<ul class="org-ul">
+<li>I don't see any way to optimize this :(</li>
+<li>10<sub>000</sub> upperbound gave me the answer</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc5777d2" class="outline-3">
+<h3 id="orgc5777d2"><span class="section-number-3">1.22.</span> <span class="done DONE">DONE</span> 47 - Distinct Prime Factors</h3>
+<div class="outline-text-3" id="text-1-22">
+<ul class="org-ul">
+<li>again brute forcing.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org7316510" class="outline-3">
+<h3 id="org7316510"><span class="section-number-3">1.23.</span> <span class="done DONE">DONE</span> 48 - Self Powers</h3>
+<div class="outline-text-3" id="text-1-23">
+<ul class="org-ul">
+<li>I'm trying to reduce this mathematically.
+<ul class="org-ul">
+<li>got upto a point, but I'm not sure more reduction is impossible</li>
+</ul></li>
+<li>I need to define modulo arithmetic for powers, mutiplication etc&#x2026;
+<ul class="org-ul">
+<li>I'm trying to avoid BigInts</li>
+<li>julia has <code>invmod</code> !! nice</li>
+</ul></li>
+<li>:( I tried going the <code>invmod</code> route, So that I can just sum 10 terms&#x2026;
+<ul class="org-ul">
+<li>it did not work. invmod requires gcd be 1.</li>
+<li>I just used builtin <code>powermod</code> and summed all 1000 terms.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org466802e" class="outline-3">
+<h3 id="org466802e"><span class="section-number-3">1.24.</span> <span class="done DONE">DONE</span> 49 - Prime Permutations</h3>
+<div class="outline-text-3" id="text-1-24">
+<ul class="org-ul">
+<li>finally had to write a choice function to get k elements from a collection
+<ul class="org-ul">
+<li>TODO: I should rewrite this and permutations function as iterators</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org8871953" class="outline-3">
+<h3 id="org8871953"><span class="section-number-3">1.25.</span> <span class="done DONE">DONE</span> 50 - Consecutive Prime Sum</h3>
+<div class="outline-text-3" id="text-1-25">
+<ul class="org-ul">
+<li>consecutive sums can be made efficient by pre-computing partial sums</li>
+<li>For each prime p, I need to find the bounds before checking them all</li>
+<li>3secs brute-force</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgad8c276" class="outline-3">
+<h3 id="orgad8c276"><span class="section-number-3">1.26.</span> <span class="done DONE">DONE</span> 51 - Prime Digit Replacements</h3>
+<div class="outline-text-3" id="text-1-26">
+<ul class="org-ul">
+<li>used <code>choose</code> to get choices for replacement positions</li>
+<li>first problem with &gt; 5% difficulty</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org3be9ffa" class="outline-3">
+<h3 id="org3be9ffa"><span class="section-number-3">1.27.</span> <span class="done DONE">DONE</span> 52 - Permuted Multiples</h3>
+<div class="outline-text-3" id="text-1-27">
+<ul class="org-ul">
+<li>used <code>Set</code> for comparision</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org4970bfd" class="outline-3">
+<h3 id="org4970bfd"><span class="section-number-3">1.28.</span> <span class="done DONE">DONE</span> 53 - Combinatoric Selections</h3>
+<div class="outline-text-3" id="text-1-28">
+<p>
+How many values of binomial(n, r) are greater than one-million.
+</p>
+<ul class="org-ul">
+<li>C(n, r) = C(n-1, r-1) + C(n, r-1). So if any of the summands are &gt; 1M, then the result is also.</li>
+<li>We can build a 100x100 array and start building it recursively.
+<ul class="org-ul">
+<li>forall n. C(n, 1) = n, forall k.C(k, k) = 1.</li>
+</ul></li>
+<li><code>count</code> is nice. I just used partial application! <code>count(==(10^6), ...)</code>. I din't even know julia had them!!!</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org362ff2f" class="outline-3">
+<h3 id="org362ff2f"><span class="section-number-3">1.29.</span> <span class="done DONE">DONE</span> 54 - Poker Hands</h3>
+<div class="outline-text-3" id="text-1-29">
+<p>
+I need to map each hand to a scoring system with the following properties:
+</p>
+<ol class="org-ol">
+<li>uniquely determinded</li>
+<li>easily comparable. preferably in dictionary order.</li>
+<li>took a while to write the scoring system.
+<ul class="org-ul">
+<li>only player1 wins are accurate. The rest might be draws or player2 wins. comparision must also be done in reverse to eliminate draws.</li>
+</ul></li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orga087a17" class="outline-3">
+<h3 id="orga087a17"><span class="section-number-3">1.30.</span> <span class="done DONE">DONE</span> 55 - lychrel numbers</h3>
+<div class="outline-text-3" id="text-1-30">
+<p>
+<a href="https://en.wikipedia.org/wiki/Lychrel_number">https://en.wikipedia.org/wiki/Lychrel_number</a>
+Interesting a simple function can give rise to unsolved problems.
+</p>
+<ul class="org-ul">
+<li>Just simulated everything.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc26023c" class="outline-3">
+<h3 id="orgc26023c"><span class="section-number-3">1.31.</span> <span class="done DONE">DONE</span> 56 - Powerful Digit Sum</h3>
+<div class="outline-text-3" id="text-1-31">
+<p>
+for a, b &lt; 100 consider numbers of the form a<sup>b</sup>. Which of these has the largest digit sum?
+</p>
+<ul class="org-ul">
+<li>brute force it with <code>LongNums</code></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge535dd6" class="outline-3">
+<h3 id="orge535dd6"><span class="section-number-3">1.32.</span> <span class="done DONE">DONE</span> 57 - Square root convergents</h3>
+<div class="outline-text-3" id="text-1-32">
+<p>
+x = sqrt(2) - 1, then x = 1/(sqrt(2)+1) = 1/(2 + x). by repeatedly replacing x on the rhs with lhs, we get the continued fraction.
+</p>
+<ul class="org-ul">
+<li>x<sub>0</sub> = 0</li>
+<li>x<sub>(n+1)</sub> = 1/(2+x<sub>n</sub>)</li>
+<li>Had to make it Rational{BigInt}; overflowing otherwise</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org094e025" class="outline-3">
+<h3 id="org094e025"><span class="section-number-3">1.33.</span> <span class="done DONE">DONE</span> 58 - Spiral Primes</h3>
+<div class="outline-text-3" id="text-1-33">
+<p>
+I've already seen this in <a href="#orgf57f0df">28 - Number Spiral Diagonals</a>.
+</p>
+<ul class="org-ul">
+<li>now just have to filter primes</li>
+<li>taking too long. even 5000 layer is still not &lt; 10%, i.e., primes upto 25 million.</li>
+<li>for 1000 layers, I have 13.8%</li>
+</ul>
+<p>
+This problem is 5% difficulty, so thinking that I have missed something obvious, I searched for hints online. A few that I looked at just brute forced them using miller-rabin primality test.
+</p>
+<ul class="org-ul">
+<li>I thought may be I should finally implement an advanced primality test, but then I came across <a href="https://en.wikipedia.org/wiki/Primality_test#Number-theoretic_methods">https://en.wikipedia.org/wiki/Primality_test#Number-theoretic_methods</a></li>
+<li>for all diagonal numbers n, n-1 is easily factorizable.</li>
+<li>So I implemented lucas primality test. <a href="https://en.wikipedia.org/wiki/Lucas_primality_test">https://en.wikipedia.org/wiki/Lucas_primality_test</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org16728d0" class="outline-3">
+<h3 id="org16728d0"><span class="section-number-3">1.34.</span> <span class="done DONE">DONE</span> 59 - Xor Decryption</h3>
+<div class="outline-text-3" id="text-1-34">
+<ul class="org-ul">
+<li>I tried searching for _the _ for 26<sup>3</sup> possible keys.</li>
+<li>Only 6 keys gave plain text that have it.</li>
+<li>Looking at them only one had sensible starting words</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org49f1183" class="outline-3">
+<h3 id="org49f1183"><span class="section-number-3">1.35.</span> <span class="todo TODO">TODO</span> 60 - Prime Pair Sets&#xa0;&#xa0;&#xa0;<span class="tag"><span class="clique">clique</span>&#xa0;<span class="subgraph">subgraph</span></span></h3>
+<div class="outline-text-3" id="text-1-35">
+<ul class="org-ul">
+<li>Seems like I will be using lots of <code>Combinatorics</code></li>
+<li>simple brute force is taking too long&#x2026;</li>
+<li>I first filtered all primes that can be split into primes that can be reverse combined to a new prime.
+<ul class="org-ul">
+<li>Every pair from the required set will be in this.</li>
+<li>Now how do I get the required set??? We have a graph in which we need a five nodes that are all connected to each other, i.e, find the complete 5 node subgraph.</li>
+<li>I should draw the graph and see how it looks, there seem to be atmost 71 edges for 10<sup>4</sup> upperbound.</li>
+<li>It is still taking too long. How the hell can I get this in &lt;1sec</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org9902ed7" class="outline-3">
+<h3 id="org9902ed7"><span class="section-number-3">1.36.</span> <span class="done DONE">DONE</span> 61 - Cyclical Figurate Numbers</h3>
+<div class="outline-text-3" id="text-1-36">
+<p>
+Cyclic set of 4-digit numbers:: last two digits of one number are first two digits of the other number; last number and the first form a pair.
+Find the sum of only ordered set of six cyclic 4-digit numbers for which each polygonal type([3, 4, 5, 6, 7, 8]) is represented.
+</p>
+<ul class="org-ul">
+<li>there are 9000 4 digit numbers. binomial(9000, 4) ~ 10<sup>21</sup>; full brute search is impossible</li>
+<li>there are less than 100 4-digit triangual numbers. One of them must be in the set.
+<ul class="org-ul">
+<li>for every number we check if another figurate number with starting two digits exists, if does we keep going.</li>
+<li>Hmm, we will be essentially doing backtracking.</li>
+<li>There are only 40 4-digit octagonal numbers; so it is better to start with those.</li>
+</ul></li>
+<li>I first created a graph.
+<ul class="org-ul">
+<li>nodes are all <span class="underline">for in 3:8, (i, f(i, n))</span>, i.e, tuples of all figurate numbers</li>
+<li>there is a directed edge between two nodes if last two digits of one number are first two digits of other and they are different figurate types</li>
+<li>In this graph, I need to find cycles of length 6 such that all nodes have different figurate types.</li>
+<li>I din't find any cycles of length 6, only those from 2:5
+<ul class="org-ul">
+<li>Haaa, this is just dfs search for a first cycle. It did not represent all cycles.</li>
+</ul></li>
+
+<li>I need to find all figurate unique paths b/w nodes</li>
+<li>Finding all paths still did not work. :(</li>
+<li>Figured it out, my copy of visited and unique is not getting refreshed b/w different paths of the same vertices. So it is only working for one path.</li>
+</ul></li>
+</ul>
+<p>
+:) My first 20% difficulty problem
+I need to write a algorithms library. Seems like I'm going to need them from now.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6130352" class="outline-3">
+<h3 id="org6130352"><span class="section-number-3">1.37.</span> <span class="done DONE">DONE</span> 62 - Cubic Permutations</h3>
+<div class="outline-text-3" id="text-1-37">
+<p>
+Find the smallest cube for which exactly five permutations of its digits are cube.
+</p>
+<ul class="org-ul">
+<li>full brute search for a set of three permutations in a three digit range is taking &gt; 37seconds</li>
+<li>if x<sup>3</sup> and y<sup>3</sup> are digit permutations of each other, then they must have same number of digits, i.e., (x/y)<sup>3</sup> &lt; 10. So for every number x, we check the range [x+1, x*10<sup>(1/3)</sup>] for numbers whose cubes are digit factorials of x<sup>3</sup>.
+<ul class="org-ul">
+<li>If we find 4 other such numbers we have the answer.</li>
+<li>I found 2 such solutions in 1000:9999 range.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge51ecfa" class="outline-3">
+<h3 id="orge51ecfa"><span class="section-number-3">1.38.</span> <span class="done DONE">DONE</span> 63 - Powerful Digit Counts</h3>
+<div class="outline-text-3" id="text-1-38">
+<p>
+How many n-digit positive integers exists which are also nth power of a digit.
+</p>
+<ul class="org-ul">
+<li><del>I assume we are not including 1:9 which trivialy satisfy this.</del> we are!!</li>
+<li>1<sup>1</sup> = 1, so should 1 be included in solution?</li>
+<li>10<sup>(n-1)</sup> <code>&lt; x =</code> d<sup>n</sup> &lt; 10<sup>n</sup>
+<ul class="org-ul">
+<li>n-1 &lt; log x &lt; n imples n-1/n &lt; log d &lt; 1 imples n &lt; 1/(1-log d)</li>
+<li>If we take floor(1/(1-log10(d))) then we have a number of powers of digit d, that are of same digit-length of exponent.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org233e299" class="outline-3">
+<h3 id="org233e299"><span class="section-number-3">1.39.</span> <span class="done DONE">DONE</span> 64 - Odd Period Square Roots</h3>
+<div class="outline-text-3" id="text-1-39">
+<p>
+there is a recurrence relation, b/w a<sub>i</sub> and x,y in (sqrt(N) - x)/y.
+We start with x=0, y=0. When we finally end up with a same (x, y) the period will be determined.
+</p>
+
+<p>
+Wow, this was tricky to get it right.
+</p>
+<ul class="org-ul">
+<li>I defined a transition b/w two terms (t, t1) of type (a*sqrt(N) - b)/c.
+<ul class="org-ul">
+<li>t = k + 1/t1; if t is represented by (a, b, c) then t1 will be (ac, x, a*a*N-b*b) where x has a tricky definition.</li>
+<li>Now I have to continue this transitions untill the state (a, b, c) repeats</li>
+</ul></li>
+</ul>
+<p>
+I looked in the forum and there are many simpler ways to do this. By going a more generic route, I seem to have complicated things for myself again!!
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1c2db1b" class="outline-3">
+<h3 id="org1c2db1b"><span class="section-number-3">1.40.</span> <span class="done DONE">DONE</span> 65 - Convergents of e</h3>
+<div class="outline-text-3" id="text-1-40">
+<p>
+Julia might make it easy with rational support.
+</p>
+<ul class="org-ul">
+<li>I had to use Rational{BigInt}, but julia made things very easy.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org1a8e92f" class="outline-3">
+<h3 id="org1a8e92f"><span class="section-number-3">1.41.</span> <span class="done DONE">DONE</span> 66 - Diophantine Equation&#xa0;&#xa0;&#xa0;<span class="tag"><span class="pells_equation">pells_equation</span></span></h3>
+<div class="outline-text-3" id="text-1-41">
+<p>
+<a href="https://en.wikipedia.org/wiki/Chakravala_method">https://en.wikipedia.org/wiki/Chakravala_method</a>
+Heuristics to work with chakravala method seems hard to code.
+I did a continued fraction representation in 64, so that might be the easier route to take.
+Wiki says, (h<sub>i</sub>, k<sub>i</sub>) is a solution to \( x^2-ny^2\) where \(\dfrac{h_i}{k_i}\) is a convergent to the regular continued fraction of \(\sqrt{n}\).
+combined with wikipedia formula on continued fraction convergent gives:
+</p>
+\begin{gather}
+  \text{The fundamental solution }(x_1, y_1) =
+  \begin{cases}
+    (h_{p-1}, k_{p-1}), \text{for p even} \\
+    (h_{2p-1}, k_{2p-1}), \text{for p odd}
+  \end{cases} \\
+  \dfrac{h_n}{k_n} = [a_0; a_1, ..., a_n] \\
+  \begin{bmatrix}
+    h_n & h_{n-1} \\ k_n & k_{n-1}
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+    a_0 & 1 \\ 1 & 0
+  \end{bmatrix}
+  ...
+  \begin{bmatrix}
+    a_n & 1 \\ 1 & 0
+  \end{bmatrix}
+\end{gather}
+</div>
+</div>
+
+<div id="outline-container-org1e76819" class="outline-3">
+<h3 id="org1e76819"><span class="section-number-3">1.42.</span> <span class="done DONE">DONE</span> 67 - Maximum Path Sum II</h3>
+<div class="outline-text-3" id="text-1-42">
+<p>
+Same solution as problem 18.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge0e4d38" class="outline-3">
+<h3 id="orge0e4d38"><span class="section-number-3">1.43.</span> <span class="done DONE">DONE</span> 68 - Magic 5-gon Ring&#xa0;&#xa0;&#xa0;<span class="tag"><span class="graphics_unfinished">graphics_unfinished</span></span></h3>
+<div class="outline-text-3" id="text-1-43">
+<p>
+I transformed this into a graph problem.
+</p>
+<ul class="org-ul">
+<li>find all possible values for the sum = 1+2+3 -&gt; 6+5+4, i.e., n=[6,15], fix n.</li>
+<li>find all triples (x, y, z) that sum upto n.</li>
+<li>create a graph with nodes as those triples, and edges b/w nodes that have a common number in the triples, label for that edge is the common number.</li>
+<li>find a k-cycle(for k-gon) with disinct edge labels. This gives a magic k-gon.</li>
+<li class="off"><code>[&#xa0;]</code> Might be a nice idea to draw a graphviz, or even better a <span class="underline">magic</span> looking 5-gon for each one found. Maybe try a custom svg with style sheets(never did that).</li>
+<li>there are a total of 12 magic 5-gons. I need to convert my representation of them into strings required by the question</li>
+<li>only 4 are of length 16</li>
+<li>making sure the cycle is valid, and getting the solution string from the graph representation took too long.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org6698b0c" class="outline-3">
+<h3 id="org6698b0c"><span class="section-number-3">1.44.</span> <span class="done DONE">DONE</span> 69 - Totient Maximum</h3>
+<div class="outline-text-3" id="text-1-44">
+<p>
+find the value of n &lt;= 10<sup>6</sup> for which n/phi(n) is maximum.
+</p>
+<ul class="org-ul">
+<li><code>totient</code> added to <code>NumberTheory</code>. direct calculation after prime factorization.</li>
+<li>rest is just foldl to find the maximum</li>
+</ul>
+<p>
+I just did it on the repl, I forgot to write a script.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1f7029b" class="outline-3">
+<h3 id="org1f7029b"><span class="section-number-3">1.45.</span> <span class="done DONE">DONE</span> 70 - Totient Permutation</h3>
+<div class="outline-text-3" id="text-1-45">
+<ul class="org-ul">
+<li>just brute forced it.</li>
+<li>did not run &lt; 1sec.</li>
+<li>there must be a smarter way to do i.</li>
+</ul>
+
+<p>
+I just looked at the forum and there is a smarter way to do it.
+</p>
+
+<p>
+phi(n)/n = Product{forall p|n}(1-1/p), so for every new prime, the value of phi(n)/n becomes smaller, so we need as few prime factors as possible. If only one prime factor exists, then it will not be a digit permutation. So we search for prime pairs, that give us a digit permutation.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orgc349295" class="outline-3">
+<h3 id="orgc349295"><span class="section-number-3">1.46.</span> <span class="done DONE">DONE</span> 71 - Ordered Fractions</h3>
+<div class="outline-text-3" id="text-1-46">
+<ul class="org-ul">
+<li>n/d &lt; 3/7 implies 7n &lt; 3d so if 7n+1 = 3d, then we get the nearest???
+<ul class="org-ul">
+<li>7n+1 = 3d, for d &lt; 10<sup>6</sup> and maximize n</li>
+<li>(_, 999997) was the solution with maximal n</li>
+</ul></li>
+<li>Yes we did, I was quite close to the decimal approx. <code>round((3/7)*10^6)</code> which I tried first.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgfd2a1f9" class="outline-3">
+<h3 id="orgfd2a1f9"><span class="section-number-3">1.47.</span> <span class="done DONE">DONE</span> 72 - Counting Fractions</h3>
+<div class="outline-text-3" id="text-1-47">
+<p>
+How many elements are in the set of proper fractions (n/d) for d &lt; 10<sup>6</sup>.
+</p>
+
+<ul class="org-ul">
+<li>there are (N-1)<sup>2</sup> pairs to form fractions with.</li>
+<li>some of them form equivalent pairs; when gcd(n, d) &gt; 1.</li>
+<li>So for every d, we have phi(d) proper fractions; so the answer is sum(phi(d))</li>
+<li><code>sum(i -&gt; totient(i, spf_vec), 2:10^6)</code></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org6d5b558" class="outline-3">
+<h3 id="org6d5b558"><span class="section-number-3">1.48.</span> <span class="done DONE">DONE</span> 73 - Counting Fractions in a Range</h3>
+<div class="outline-text-3" id="text-1-48">
+<ul class="org-ul">
+<li>1/3 &lt; n/d &lt; 1/2 implies 2d &lt; 6n &lt; 3d implies 6n is in [2d+1:3d-1]</li>
+<li>the above will give me all fractions but there will multiple equivalent ones; so I need to ignore n's that are not prime to d.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org1b71aef" class="outline-3">
+<h3 id="org1b71aef"><span class="section-number-3">1.49.</span> <span class="done DONE">DONE</span> 74 - Digit Factorial Chains</h3>
+<div class="outline-text-3" id="text-1-49">
+<ul class="org-ul">
+<li>I created an array of transitions, i -&gt; digit<sub>factorial</sub>(i)
+<ul class="org-ul">
+<li>I had to traverse these transitions to ensure that all are filled; some go above the upperbound</li>
+</ul></li>
+<li>chains can be found by simple <code>x = a[x]</code> loop</li>
+<li>3.5secs; I could get this down if I don't actually keep building the chains</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgdd46d26" class="outline-3">
+<h3 id="orgdd46d26"><span class="section-number-3">1.50.</span> <span class="done DONE">DONE</span> 75 - Singular Integer Right Triangles</h3>
+<div class="outline-text-3" id="text-1-50">
+<ul class="org-ul">
+<li>generate pythagorean triples for each length l.
+<ul class="org-ul">
+<li>If this is a O(1) operation, then 1.5E6 can be done within 1sec.</li>
+</ul></li>
+<li>for m &gt; n &gt; 0, (m<sup>2</sup>-n<sup>2</sup>, 2mn, m<sup>2</sup>+n<sup>2</sup>) is a triple; length = 2m(m+n)
+<ul class="org-ul">
+<li>there can only be one way the input length l factorized into 2ab with a &lt; b &lt; 2a</li>
+</ul></li>
+<li>This will only give primitive triples &#x2013; if m, n above are coprime &#x2013; so we need add all multiples of a primitive l below the upperbound too.</li>
+<li>my solution took 36 seconds
+<ul class="org-ul">
+<li><code>divisors</code> for each number and <code>spf_vec</code> for 1.5 million numbers should be taking quite a chuck of that.
+<ul class="org-ul">
+<li>Hmm, spf<sub>vec</sub> for 1.5M takes &lt; 1sec</li>
+<li>I profiled it, <code>divisors</code> itself is taking most of the time trying out all combinations. I should rewrite that sometime.</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org16fe125" class="outline-3">
+<h3 id="org16fe125"><span class="section-number-3">1.51.</span> <span class="done DONE">DONE</span> 76 - Counting Summations&#xa0;&#xa0;&#xa0;<span class="tag"><span class="partition">partition</span></span></h3>
+<div class="outline-text-3" id="text-1-51">
+<p>
+<a href="https://en.wikipedia.org/wiki/Integer_partition">https://en.wikipedia.org/wiki/Integer_partition</a>
+</p>
+<ul class="org-ul">
+<li>I implemented the recurrence relation(from wiki) the builds upto the required answer</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd21b6c0" class="outline-3">
+<h3 id="orgd21b6c0"><span class="section-number-3">1.52.</span> <span class="todo TODO">TODO</span> 77 - Prime Summations&#xa0;&#xa0;&#xa0;<span class="tag"><span class="partition">partition</span></span></h3>
+<div class="outline-text-3" id="text-1-52">
+<p>
+Partition using only primes. Find the first number that can be written as a sum of primes in &gt; 5000 different ways.
+</p>
+\begin{gather}
+sopf(n) = \sum_{p\in\mathbb{P}, p|n}p \\
+\kappa(n)=\frac{1}{n}(sopf(n)+\sum_{j=1}^{n−1}sopf(j)\kappa(n - j))
+\end{gather}
+<p>
+The above equation is taken from math.stackexchange site, that discusses prime partitions. I'm not sure how it was derived. If a(n, k) is the number of prime summations of n, using only primes below k, then:
+</p>
+\begin{equation}
+a(n, k) = 
+\begin{cases}
+  a(n, k-1) & \text{if } k \not\in \mathbb{P} \\
+  \sum_{i=1}^{n\div k}a(n-i\cdot k, k-1) & \text{if } k \in \mathbb{P}
+\end{cases}
+\end{equation}
+</div>
+</div>
+
+<div id="outline-container-org15b0a4d" class="outline-3">
+<h3 id="org15b0a4d"><span class="section-number-3">1.53.</span> <span class="todo TODO">TODO</span> 78 - Coin Partitions&#xa0;&#xa0;&#xa0;<span class="tag"><span class="partition">partition</span></span></h3>
+<div class="outline-text-3" id="text-1-53">
+<p>
+find the least value of n for which 10<sup>6</sup>|p(n).
+</p>
+</div>
+</div>
+
+<div id="outline-container-org01081fb" class="outline-3">
+<h3 id="org01081fb"><span class="section-number-3">1.54.</span> <span class="done DONE">DONE</span> 79 - Passcode Derivation</h3>
+<div class="outline-text-3" id="text-1-54">
+<ul class="org-ul">
+<li>if xyz is a login attempt, then indices i<sub>x</sub> &lt; i<sub>y</sub> &lt; i<sub>z</sub> (in original pass and logs)</li>
+<li>if we assume all the characters in password are unique, then we can simple score each character with the number of characters smaller than it and we can obtain, all possible passwords.</li>
+<li>but if we have instances were: i<sub>x</sub> &lt; i<sub>y</sub> in one attempt and i<sub>y</sub> &lt; i<sub>x</sub> in another, then either x or y needs to occur multiple times in the password.</li>
+<li>thankfully, this was a easy version of the problem. multiplicity would make this tough.
+<ul class="org-ul">
+<li>each digit was used only once, so if we collect all digits to the right of each digit, then the last one will have no digits to the right of it.</li>
+<li>so we can recursively build the password from the right.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org76d2fc5" class="outline-3">
+<h3 id="org76d2fc5"><span class="section-number-3">1.55.</span> <span class="done DONE">DONE</span> 81 - Path Sum: Two Ways</h3>
+<div class="outline-text-3" id="text-1-55">
+<p>
+Given an NxN matrix, find a minimal path sum from top-left to bottom-right.
+In this problem we can only move down and right. In the next two problems these restrictions are reduced.
+</p>
+<ul class="org-ul">
+<li>this is quite straight forward. One full iteration of the matrix gives the answer</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org43aa03b" class="outline-3">
+<h3 id="org43aa03b"><span class="section-number-3">1.56.</span> <span class="todo TODO">TODO</span> 82 - Path Sum: Three Ways</h3>
+<div class="outline-text-3" id="text-1-56">
+<p>
+Here we can move up, down and right. We have to find the minimal path from left edge to right edge.
+</p>
+<ul class="org-ul">
+<li>I need to be careful of orientation, my <code>read_matrix</code> function is giving me transpose matrix.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org92fac38" class="outline-3">
+<h3 id="org92fac38"><span class="section-number-3">1.57.</span> <span class="todo TODO">TODO</span> 83 - PathSum: Four Ways</h3>
+<div class="outline-text-3" id="text-1-57">
+<p>
+Here we can move up, down, left, right. Minimal path from top-left to bottom-right.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7aa6d7f" class="outline-3">
+<h3 id="org7aa6d7f"><span class="section-number-3">1.58.</span> <span class="todo TODO">TODO</span> 84 - Monopoly Odds</h3>
+</div>
+
+
+<div id="outline-container-org038397e" class="outline-3">
+<h3 id="org038397e"><span class="section-number-3">1.59.</span> <span class="done DONE">DONE</span> 85 - Counting Rectangles</h3>
+<div class="outline-text-3" id="text-1-59">
+<ul class="org-ul">
+<li>let us assume the bottom-right corner is (0, 0) and top-left cornor is (x, y)</li>
+<li>for each (a, b) 0 &lt; a &lt;= x, 0 &lt; b &lt;= y we count the following
+<ul class="org-ul">
+<li>count all the rectangles with top-left corner at (a, b)</li>
+<li>this will be a*b</li>
+</ul></li>
+<li>so the sum will be ab(a+1)(b+1)/4</li>
+<li>now I should find nearest product of two triangular numbers to ub=2*10<sup>6</sup>
+<ul class="org-ul">
+<li>for each triangular number, I will find the maximum triangular that can be multipled to be below ub, and minimum triangular number that can be multiplied to be above ub</li>
+<li>minimum of all the above collected is our answer.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org689b173" class="outline-3">
+<h3 id="org689b173"><span class="section-number-3">1.60.</span> <span class="done DONE">DONE</span> 87 - Prime Power Triples</h3>
+<div class="outline-text-3" id="text-1-60">
+<p>
+How many numbers below 50 million can be expressed as the sum of prime square, cube, 4th power.
+</p>
+<ul class="org-ul">
+<li>n = p<sup>2</sup> + q<sup>3</sup> + r<sup>4</sup> (p, q, r are primes)</li>
+<li>the number of primes to look at is 331, almost 36 million choices; with numbers going upto 10 trillion.</li>
+<li>solved it, runs in &lt; 0.9sec
+<ul class="org-ul">
+<li>I only summed the powers if they are below bounds. as the number will be definitely out of bounds, we ignore it and dont store it.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgde0854a" class="outline-3">
+<h3 id="orgde0854a"><span class="section-number-3">1.61.</span> <span class="todo TODO">TODO</span> 88 - Product Sum Numbers</h3>
+</div>
+
+<div id="outline-container-orgd7c0e61" class="outline-3">
+<h3 id="orgd7c0e61"><span class="section-number-3">1.62.</span> <span class="todo TODO">TODO</span> 89 - Roman Numerals</h3>
+<div class="outline-text-3" id="text-1-62">
+<p>
+Wow this looks tedious
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgbf3386d" class="outline-3">
+<h3 id="orgbf3386d"><span class="section-number-3">1.63.</span> <span class="todo TODO">TODO</span> 91 - Right Triangles With Integer Coordinates</h3>
+<div class="outline-text-3" id="text-1-63">
+<p>
+Combinatorics??? Or will it become Diophantine?
+A=(a, b) and X=(x, y). Suppose OA is the hypotenuse of OAX.
+</p>
+\begin{gather}
+  a^2+b^2 = x^2+y^2+(a-x)^2+(b-x)^2 \Longrightarrow x^2+y^2-ax-by = 0 \\
+  (x-\dfrac{a}{2})^2 + (y-\dfrac{b}{2})^2 = \dfrac{a^2+b^2}{4}
+\end{gather}
+<p>
+Integer points on the circle with diameter \(\overrightarrow{OA}\).
+</p>
+</div>
+</div>
+
+<div id="outline-container-org83a2644" class="outline-3">
+<h3 id="org83a2644"><span class="section-number-3">1.64.</span> <span class="done DONE">DONE</span> 92 - Square Digit Chains</h3>
+<div class="outline-text-3" id="text-1-64">
+<ul class="org-ul">
+<li>easier than other chain problems(like factorial) since the upper bound ensures we don't need to do initial transitive closure above the upper bound values</li>
+<li>since I construct the whole chain my solution to longer ~ 3 secs</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org0605b01" class="outline-3">
+<h3 id="org0605b01"><span class="section-number-3">1.65.</span> <span class="todo TODO">TODO</span> 93 - Arithmetic Expressions</h3>
+<div class="outline-text-3" id="text-1-65">
+<p>
+Wow, this is quite different
+</p>
+<ul class="org-ul">
+<li>I have to find the number of trees possible first.</li>
+<li>Then choose the operators for branching nodes, numbers for leaves.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org7e24fef" class="outline-3">
+<h3 id="org7e24fef"><span class="section-number-3">1.66.</span> <span class="done DONE">DONE</span> 94 - Almost Equilateral Triangles&#xa0;&#xa0;&#xa0;<span class="tag"><span class="pells_equation">pells_equation</span></span></h3>
+<div class="outline-text-3" id="text-1-66">
+<p>
+Almost Equilateral Triangle:: two sides are equal and they differ from the third by atmost 1.
+Find the sum of perimeters of all these triangles whose side lengths and area are integral, whose perimeters do not exceed one billion.
+</p>
+\begin{gather}
+  n^2 = (\frac{n \pm 1}{2})^2 + x^2 \qquad \Longrightarrow \qquad
+  (\frac{3n\pm1}{2})^2 - 3x^2 = 1\\
+  Area = x \cdot \frac{n\pm1}{2}
+\end{gather}
+
+<p>
+Now we have pell's equation \(y^2 - 3x^2 = 1\). If \(y \not\equiv 0 (mod 3)\) then it is a solution to our problem.
+I just noticed that y cannot be 0 mod 3, otherwise 3 will divide 1.
+x=2, y=1 is a fundamental solution to \(x^2-3y^2=1\), so we just need to generate additional solutions within the given bounds and check them for our requirements.
+</p>
+\begin{equation}
+\begin{matrix}
+  \displaystyle x_{k+1} \\
+  y_{k+1}
+\end{matrix} = \begin{bmatrix}
+  x_1 & y_1 \cdot n \\
+  y_1 & x_1
+\end{bmatrix}\begin{matrix}
+  x_k \\
+  y_k
+\end{matrix}
+\end{equation}
+<p>
+This recurrence relation will give us solution in increasing order, so we can stop when reach the required upperbound.
+Perimeter is \(3n\pm2\), so \(n\leq\dfrac{10^9+2}{3}\), i.e., 333333334.
+The fundamental solution (2, 1) gives a empty triangle 1-1-0, with zero area, so we need to ignore that. The rest of solutions all give a triangle.
+</p>
+<div class="org-src-container">
+<pre class="src src-julia">sum(m -&gt; isalmost△(m)[2], pells_3((x, y) -&gt; x &gt; 333333334)) - 2
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org821b925" class="outline-3">
+<h3 id="org821b925"><span class="section-number-3">1.67.</span> <span class="done DONE">DONE</span> 95 - Amicable Chains</h3>
+<div class="outline-text-3" id="text-1-67">
+<p>
+I actually forgot that sum of divisors has a closed formula, given a prime factorization. Previously I just got all divisors and summed them up, but the combinatorics was taking too much time.
+</p>
+<ul class="org-ul">
+<li>with a better sum of divisors, this problem is not much different than other <span class="underline">chain</span> problems.</li>
+</ul>
+<p>
+My first 30% problem, this didn't didn't feel that hard.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org45b8bff" class="outline-3">
+<h3 id="org45b8bff"><span class="section-number-3">1.68.</span> <span class="todo TODO">TODO</span> 96 - Su Doku</h3>
+<div class="outline-text-3" id="text-1-68">
+<p>
+I'm finally writing a sudoku solver.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org210f194" class="outline-3">
+<h3 id="org210f194"><span class="section-number-3">1.69.</span> <span class="done DONE">DONE</span> 97 - Large Non-Mersenne Prime</h3>
+<div class="outline-text-3" id="text-1-69">
+<ul class="org-ul">
+<li>rolled my own <code>powermod</code> instead of using the builtin one.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgda4ec71" class="outline-3">
+<h3 id="orgda4ec71"><span class="section-number-3">1.70.</span> <span class="todo TODO">TODO</span> 98 - Anagramic Squares</h3>
+<div class="outline-text-3" id="text-1-70">
+<ul class="org-ul">
+<li>two words must be permutations of each other, so the substituted numbers must be digit permutations of each other.</li>
+<li>we can check if two words are permutations by <code>count_freq</code>.
+<ul class="org-ul">
+<li>first we collect all the permutations into bunches</li>
+</ul></li>
+<li>if the number of letters is 10, then we &gt; 3million checks to make, that is for just one bunch.</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgd176ae3" class="outline-3">
+<h3 id="orgd176ae3"><span class="section-number-3">1.71.</span> <span class="done DONE">DONE</span> 99 - Largest Exponential</h3>
+<div class="outline-text-3" id="text-1-71">
+<p>
+logarithm is monotonic, so we can compare logarithms instead of exponentials.
+I need to learn about floats more. Can I estimate how much error floating point representation causes? How much precision is needed for the given range of numbers??
+Let me try this out first.
+</p>
+<ul class="org-ul">
+<li>it worked, Float64 precision helped. all the numbers seem to be around 6.919e6 range</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-julia">maximum(i -&gt; reverse(i), enumerate(map(f, ns)))
+</pre>
+</div>
+<ul class="org-ul">
+<li>with builtin dictionary order comparisons things are becoming easy.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc413cf1" class="outline-3">
+<h3 id="orgc413cf1"><span class="section-number-3">1.72.</span> <span class="done DONE">DONE</span> 100 - Arranged Probability&#xa0;&#xa0;&#xa0;<span class="tag"><span class="pells_equation">pells_equation</span></span></h3>
+<div class="outline-text-3" id="text-1-72">
+<p>
+Let (b, r) be the number of blue and red discs respectively.
+</p>
+<ul class="org-ul">
+<li><p>
+If \(\displaystyle b+r=n\),
+</p>
+\begin{align}
+  \mathbb{P}(BB)=\dfrac{b}{n}\cdot\dfrac{b-1}{n-1} \\
+  \mathbb{P}(BB)=\dfrac{1}{2} \Longrightarrow 2b(b-1) = n(n-1) \\
+  2(2b-1)^2 - (2n-1)^2=1
+\end{align}</li>
+</ul>
+<p>
+We have pell's equation of the form \(x^2-2y^2=-1\), where \(x=1, y=1\) is a fundamental solution. For negative pell's equations, the additional solutions work a bit differently
+</p>
+\begin{equation}
+\begin{matrix}
+  x_{k+2} \\
+  y_{k+2}
+\end{matrix} = \begin{bmatrix}
+  x_1^2+ny_1^2 & 2ny_1x_1 \\
+  2y_1x_1 & x_1^2+ny_1^2
+\end{bmatrix}
+\begin{matrix}
+  x_k \\
+  y_k
+\end{matrix}
+\end{equation}
+<p>
+So the inner matrix is
+</p>
+\begin{bmatrix}
+  3 & 4 \\ 2 & 3
+\end{bmatrix}
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Created: 2024-03-21 Thu 16:01</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
