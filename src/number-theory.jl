@@ -37,8 +37,37 @@ function spf(n)
 end
 
 "TODO: I should replace this by a linear-sieve"
-function smallest_prime_factors(n)
-    return map(spf, 1:n)
+function smallest_prime_factors(n::Int32)
+    a = zeros(Int32, n)
+    function next(x)
+        i = x + 1
+        while (i <= n)
+            if a[i] == 0
+                return i
+            else
+                i += 1
+            end
+        end
+        return i
+    end
+    p = 2; q = 2; count = n-1
+    while p*p <= n
+        while p*q <= n
+            x = p*q
+            while x <= n
+                a[x] = p; x *= p; count -= 1
+            end
+            q = next(q)
+        end
+        p = next(p)
+        q = p
+    end
+    for i in 1:n
+        if a[i] == 0
+            a[i] = i
+        end
+    end
+    return a
 end
 
 function prime_factors(n, spf_vec)
@@ -92,6 +121,15 @@ function totient(n, spf_vec)
         end
         return phi
     end
+end
+
+function totient_fast(n, spf_vec)
+end
+
+function mobius(n, spf_vec)
+end
+
+function totient_summatory(n, spf_vec)
 end
 
 end #endmodule

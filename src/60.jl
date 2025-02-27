@@ -25,7 +25,7 @@ function split_prime(x, spf_vec)
         x2 = digits2num(ds[(i+1):nd])
         y = digits2num(view(ds, vcat((i+1):nd, 1:i)))
         if ip(x1) && ip(x2) && ip(y)
-            return (true, (x1, x2))
+            return (true, (x1, x2)) # this need not be a unique split. XXX: TOOD: 
         end
     end
     return (false, nothing)

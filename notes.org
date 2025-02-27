@@ -1,4 +1,12 @@
+#+AUTHOR: k3ut0i
+#+TITLE: Notes on 100-problems from project euler
+#+OPTIONS: toc:nil
+#+STARTUP: content, latexpreview
+
 * Some notes on my solutions
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
 1-25 are re-done in [[file:learning-julia.org][julia]].
 ** DONE 26 - Reciprocal Cycles
 1. I can simulate the division method and look for cycles.
@@ -249,7 +257,7 @@ This problem is 5% difficulty, so thinking that I have missed something obvious,
 - Only 6 keys gave plain text that have it.
 - Looking at them only one had sensible starting words
 
-** TODO 60 - Prime Pair Sets                                :clique:subgraph:
+** TODO 60 - Prime Pair Sets                            :clique:subgraph:d20:
 - Seems like I will be using lots of ~Combinatorics~
 - simple brute force is taking too long...
 - I first filtered all primes that can be split into primes that can be reverse combined to a new prime.
@@ -403,24 +411,27 @@ How many elements are in the set of proper fractions (n/d) for d < 10^6.
 https://en.wikipedia.org/wiki/Integer_partition
 - I implemented the recurrence relation(from wiki) the builds upto the required answer
 
-** TODO 77 - Prime Summations                                     :partition:
+** DONE 77 - Prime Summations                                 :partition:d25:
 Partition using only primes. Find the first number that can be written as a sum of primes in > 5000 different ways.
 \begin{gather}
 sopf(n) = \sum_{p\in\mathbb{P}, p|n}p \\
 \kappa(n)=\frac{1}{n}(sopf(n)+\sum_{j=1}^{n−1}sopf(j)\kappa(n - j))
 \end{gather}
-The above equation is taken from math.stackexchange site, that discusses prime partitions. I'm not sure how it was derived. If a(n, k) is the number of prime summations of n, using only primes below k, then:
+The above equation is taken from math.stackexchange site, that discusses prime partitions. I'm not sure how it was derived.
+
+If a(n, k) is the number of prime summations of n, using only primes below k, then:
 \begin{equation}
 a(n, k) = 
 \begin{cases}
   a(n, k-1) & \text{if } k \not\in \mathbb{P} \\
-  \sum_{i=1}^{n\div k}a(n-i\cdot k, k-1) & \text{if } k \in \mathbb{P}
+  a(n-k, k) + a(n, k-1) & \text{if } k \in \mathbb{P}
 \end{cases}
 \end{equation}
+This worked... had a bit of help from here https://oeis.org/A000607
 
-** TODO 78 - Coin Partitions                                      :partition:
+** DONE 78 - Coin Partitions                                  :partition:d30:
 find the least value of n for which 10^6|p(n).
-
+I modified the partitions code for problem 76, to only calculate the values modulo 10^6. This way we do not have to calculate large numbers. We just have to keep going until we find a _n_ such that $p(n) \equiv 0 \mod 10^6$.
 ** DONE 79 - Passcode Derivation
 - if xyz is a login attempt, then indices i_x < i_y < i_z (in original pass and logs)
 - if we assume all the characters in password are unique, then we can simple score each character with the number of characters smaller than it and we can obtain, all possible passwords.
@@ -429,19 +440,27 @@ find the least value of n for which 10^6|p(n).
   + each digit was used only once, so if we collect all digits to the right of each digit, then the last one will have no digits to the right of it.
   + so we can recursively build the password from the right.
 
+** DONE 80 - Square Root digital expansion                              :d20:
+I'm planning to calculate the integer square root of (n*10^198) and then sum the digits of the result. Floating point precision is hard to keep track of.
+I initially planned to leverage my continuted fractions formula, but this seems easier to reason.
+<2025-02-27 Thu> I wasted too much time on this. I should have just used bigints. Atleast I wrote my own ~isqrt_~ function to search for it.
+#+begin_src julia
+mapfoldl(f, +, filter(x -> isqrt(x)^2 != x, 1:100); init=0)
+#+end_src
+
 ** DONE 81 - Path Sum: Two Ways
 Given an NxN matrix, find a minimal path sum from top-left to bottom-right.
 In this problem we can only move down and right. In the next two problems these restrictions are reduced.
 - this is quite straight forward. One full iteration of the matrix gives the answer
 
-** TODO 82 - Path Sum: Three Ways
+** TODO 82 - Path Sum: Three Ways                                       :d20:
 Here we can move up, down and right. We have to find the minimal path from left edge to right edge.
 - I need to be careful of orientation, my ~read_matrix~ function is giving me transpose matrix.
 
-** TODO 83 - PathSum: Four Ways
+** TODO 83 - PathSum: Four Ways                                         :d25:
 Here we can move up, down, left, right. Minimal path from top-left to bottom-right.
 
-** TODO 84 - Monopoly Odds
+** TODO 84 - Monopoly Odds                                              :d35:
 
 
 ** DONE 85 - Counting Rectangles
@@ -454,6 +473,16 @@ Here we can move up, down, left, right. Minimal path from top-left to bottom-rig
   + for each triangular number, I will find the maximum triangular that can be multipled to be below ub, and minimum triangular number that can be multiplied to be above ub
   + minimum of all the above collected is our answer.
 
+** TODO 86 - Cuboid Route                                               :d35:
+flatten the cuboid and we will find ourself with one side a, and other side (b+c).
+If we first choose to meet on the middle of edge _a_, then the smallest distance is
+$\sqrt(a^2+(b+c)^2)$. The shortest route candidate needs a to be the largest of (a, b, c).
+all permutations only differ in $2\cdot b\cdot c$.
+1. find a pythagorian triple (x, y, z) where x < y < z.
+2. a = y, b+c = x. So there will be (x-1) cuboids with the smallest distance as integer z.
+3. a = x, b+c = y. b and c both must be less than a. $\lfloor y \div 2 \rfloor - x + 2$; Am I double counting here...
+I am missing something...
+
 ** DONE 87 - Prime Power Triples
 How many numbers below 50 million can be expressed as the sum of prime square, cube, 4th power.
 - n = p^2 + q^3 + r^4 (p, q, r are primes)
@@ -461,12 +490,13 @@ How many numbers below 50 million can be expressed as the sum of prime square, c
 - solved it, runs in < 0.9sec
   + I only summed the powers if they are below bounds. as the number will be definitely out of bounds, we ignore it and dont store it.
 
-** TODO 88 - Product Sum Numbers
+** TODO 88 - Product Sum Numbers                                        :d40:
 
-** TODO 89 - Roman Numerals
+** TODO 89 - Roman Numerals                                             :d20:
 Wow this looks tedious
 
-** TODO 91 - Right Triangles With Integer Coordinates
+** TODO 90 - Cube Digit Pairs                                           :d40:
+** TODO 91 - Right Triangles With Integer Coordinates                   :d25:
 Combinatorics??? Or will it become Diophantine?
 A=(a, b) and X=(x, y). Suppose OA is the hypotenuse of OAX.
 \begin{gather}
@@ -479,7 +509,7 @@ Integer points on the circle with diameter \(\overrightarrow{OA}\).
 - easier than other chain problems(like factorial) since the upper bound ensures we don't need to do initial transitive closure above the upper bound values
 - since I construct the whole chain my solution to longer ~ 3 secs
 
-** TODO 93 - Arithmetic Expressions
+** TODO 93 - Arithmetic Expressions                                     :d35:
 Wow, this is quite different
 - I have to find the number of trees possible first.
 - Then choose the operators for branching nodes, numbers for leaves.
@@ -520,13 +550,13 @@ I actually forgot that sum of divisors has a closed formula, given a prime facto
 - with a better sum of divisors, this problem is not much different than other _chain_ problems.
 My first 30% problem, this didn't didn't feel that hard.
 
-** TODO 96 - Su Doku
+** TODO 96 - Su Doku                                                    :d25:
 I'm finally writing a sudoku solver.
 
 ** DONE 97 - Large Non-Mersenne Prime
 - rolled my own ~powermod~ instead of using the builtin one.
 
-** TODO 98 - Anagramic Squares
+** TODO 98 - Anagramic Squares                                          :d35:
 - two words must be permutations of each other, so the substituted numbers must be digit permutations of each other.
 - we can check if two words are permutations by ~count_freq~.
   + first we collect all the permutations into bunches

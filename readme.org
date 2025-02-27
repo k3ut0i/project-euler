@@ -1,2 +1,5 @@
 * Project Euler
 Solutions for some of the first 100 problems.
+
+#+CAPTION: project euler stats
+[[https://projecteuler.net/profile/k3ut0i.png]]
